@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="Rainbow.MeasureUserCtrl.UserProteinBCA"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:sChart="clr-namespace:Rainbow.UIControl.Chart;assembly=Rainbow.UIControl"
+             xmlns:my="clr-namespace:Rainbow.UIControl.Controls;assembly=Rainbow.UIControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="900">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="60"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <TabControl >
+            <TabItem Header="Data">
+                <sChart:ChartArea Name="schart" Margin="0,10,20,10"  >
+
+                </sChart:ChartArea>
+            </TabItem>
+            <TabItem Header="Stardard Curve">
+                
+            </TabItem>
+           
+        </TabControl>
+         <TextBlock Text="Valid Cruve" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="0,12,400,0" Foreground="Red"></TextBlock>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <RadioButton  Content="Samples" GroupName="Sample_Standard" Name="rbdSample">
+                
+            </RadioButton>
+            <TextBlock Grid.Row="1" Text="{DynamicResource SampleID}"></TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="0" Name="txtSampleID" Grid.ColumnSpan="2" Width="80" TextChanged="txtSampleID_TextChanged"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Name="txtTimes" 
+                     HorizontalAlignment="Right" Width="30" Margin="0,0,20,0"></TextBox>
+            <TextBlock Text="Concentration mg/ml:" Grid.Row="2"></TextBlock>
+            <my:NumTextBox Grid.Row="2" Grid.Column="1"></my:NumTextBox>
+            <TextBlock Name="tbkAbsWaveAtWavelength" Text="Absorbance at 562 nm" Grid.Row="3"></TextBlock>
+            <my:NumTextBox Grid.Row="3" Grid.Column="1"></my:NumTextBox>
+            <RadioButton Content="Standards" GroupName="Sample_Standard" Name="rbdStandard" Grid.Row="4" ></RadioButton>
+            <DataGrid Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Measure" Binding="{Binding SampleID}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Conc" Binding="{Binding SampleTestTimes}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="#" Binding="{Binding SWnm}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Avg Abs" Binding="{Binding SWnm}"></DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <DataGrid Margin="10,10,10,0" Grid.Row="1" Grid.ColumnSpan="2" Name="dataGrid"
+                    AutoGenerateColumns="False"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    CanUserAddRows="False" CanUserDeleteRows="False" AlternatingRowBackground="{StaticResource AlternatingRowBrush}" 
+                    AlternationCount="2" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Measure" Binding="{Binding SampleID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="mg/ml" Binding="{Binding SampleTestTimes}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Avg Abs" Binding="{Binding SWnm}"></DataGridTextColumn>
+                <DataGridTextColumn Header="#1" Binding="{Binding A260}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

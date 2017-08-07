@@ -1,0 +1,184 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xml:space="preserve">
+    <!--region BLL层消息错误警告提示-->
+
+    <!--region 普通信息，1开头,记录消息不提示-->
+    <sys:String x:Key="1000" >检测开始。</sys:String>
+    <!--endregion-->
+
+    <!--region警告信息 2开头,-->
+    <sys:String x:Key="2000">试剂1将要用完！</sys:String>
+    <sys:String x:Key="2002">试剂2将要用完！</sys:String>
+    <sys:String x:Key="2004">底物将要用完！</sys:String>
+    <sys:String x:Key="2006">没有标准曲线，校准品数据无法使用。</sys:String>
+    <sys:String x:Key="2008">仪器上盖打开，此时机器无法运行。</sys:String>
+    <sys:String x:Key="2010">洗涤液补水异常，排除故障后点击确定。</sys:String>
+    <sys:String x:Key="2012">废液排水异常，排除故障后点击确定。</sys:String>
+    <sys:String x:Key="2014">清洗液补水异常，排除故障后点击确定。</sys:String>
+    <sys:String x:Key="2016">孵育箱温度无法到达指定温度。</sys:String>
+    <!--endregion-->
+
+    <!--region 错误信息，或者要弹出窗口的提示 3开头,提示会后作出相应的动作-->
+    <sys:String x:Key="3000">超时故障</sys:String>
+    <sys:String x:Key="3001">USB重新连接USB连接线，点击 启动 按钮继续仪器运行。</sys:String>
+    <sys:String x:Key="3002">底物不足！</sys:String>
+    <sys:String x:Key="3003">未找到试剂1！</sys:String>
+    <sys:String x:Key="3004">试剂1不足！</sys:String>
+    <sys:String x:Key="3005">未找到试剂2！</sys:String>
+    <sys:String x:Key="3006">试剂2不足！</sys:String>
+    <sys:String x:Key="3008">未找到试剂3！</sys:String>
+    <sys:String x:Key="3010">试剂3不足！</sys:String>
+    <sys:String x:Key="3012">未找到样本架，放置完样本架点击确定继续！</sys:String>
+    <sys:String x:Key="3014">条码扫描失败！</sys:String>
+    <sys:String x:Key="3016">反应条已用完，添加反应条后点确定继续！</sys:String>
+    <sys:String x:Key="3018">未找到标定数据，将无法完成定标！</sys:String>
+    <sys:String x:Key="3020">未找到定性结果对照数据，请填写相关信息！</sys:String>
+    <sys:String x:Key="3022">洗板负压泵或管故障路漏气，仪器已暂停！</sys:String>
+    <sys:String x:Key="3024">正压泵故障或漏气，仪器已暂停！</sys:String>
+    <sys:String x:Key="3026">总负压泵故障或管路漏气，仪器已暂停！</sys:String>
+    <sys:String x:Key="3028">洗板负压压力传感器故障，仪器已暂停！</sys:String>
+    <sys:String x:Key="3030">正压压力传感器故障，仪器已暂停！</sys:String>
+    <sys:String x:Key="3032">总负压压力传感器故障，仪器已暂停！</sys:String>
+    <!--endregion-->
+
+    <!--region 普通消息，弹出提示框，4开头-->
+    <sys:String x:Key="4000">检测完成。</sys:String>
+    <!--endregion-->
+
+    <!--region 通讯出现的错误信息,主要是未知的超时错误  以"CanID+命令"作为Key-->
+    <sys:String x:Key="50CA">反应条进样仓复位超时。</sys:String>
+    <sys:String x:Key="50CB">反应条进样仓进反应条超时。</sys:String>
+    <sys:String x:Key="50CD">反应条进样仓后退超时。</sys:String>
+
+    <sys:String x:Key="60YR">样本架系统复位超时。</sys:String>
+    <sys:String x:Key="60YS">定位样本超时。</sys:String>
+    <sys:String x:Key="60YB">更换样本架超时。</sys:String>
+    <sys:String x:Key="60SM">样本系统扫描条形码超时。</sys:String>
+    <sys:String x:Key="60YZ">检查是否存在试管超时。</sys:String>
+    <sys:String x:Key="60SV">设置样本系统条形码扫描灵敏度超时。</sys:String>
+
+    <sys:String x:Key="49NA">样本臂A(SA)复位超时。</sys:String>
+    <sys:String x:Key="49AA">样本臂A(SA)吸液超时。</sys:String>
+    <sys:String x:Key="49DA">样本臂A(SA)加液超时。</sys:String>
+    <sys:String x:Key="49RA">样本臂A(SA)洗针超时。</sys:String>
+    <sys:String x:Key="49UA">样本臂A(SA)抬起针超时。</sys:String>
+
+    <sys:String x:Key="50NB">样本臂B(SB)复位超时。</sys:String>
+    <sys:String x:Key="50AB">样本臂B(SB)吸液超时。</sys:String>
+    <sys:String x:Key="50DB">样本臂B(SB)加液超时。</sys:String>
+    <sys:String x:Key="50RB">样本臂B(SB)洗针超时。</sys:String>
+    <sys:String x:Key="50UB">样本臂B(SB)抬起针超时。</sys:String>
+
+    <sys:String x:Key="51NC">试剂1臂A(R1A)复位超时。</sys:String>
+    <sys:String x:Key="51AD">试剂1臂A(R1A)吸液超时。</sys:String>
+    <sys:String x:Key="51DD">试剂1臂A(R1A)加液超时。</sys:String>
+    <sys:String x:Key="51RC">试剂1臂A(R1A)洗针超时。</sys:String>
+    <sys:String x:Key="51UC">试剂1臂A(R1A)抬起针超时。</sys:String>
+
+    <sys:String x:Key="52ND">试剂1臂B(R1B)复位超时。</sys:String>
+    <sys:String x:Key="52AE">试剂1臂B(R1B)吸液超时。</sys:String>
+    <sys:String x:Key="52DF">试剂1臂B(R1B)加液超时。</sys:String>
+    <sys:String x:Key="52RD">试剂1臂B(R1B)洗针超时。</sys:String>
+    <sys:String x:Key="52UD">试剂1臂B(R1B)抬起针超时。</sys:String>
+
+    <sys:String x:Key="53NC">试剂2臂A(R2A)复位超时。</sys:String>
+    <sys:String x:Key="53AD">试剂2臂A(R2A)吸液超时。</sys:String>
+    <sys:String x:Key="53DD">试剂2臂A(R2A)加液超时。</sys:String>
+    <sys:String x:Key="53RC">试剂2臂A(R2A)洗针超时。</sys:String>
+    <sys:String x:Key="53UE">试剂2臂A(R2A)抬起针超时。</sys:String>
+
+    <sys:String x:Key="54ND">试剂2臂B(R2B)复位超时。</sys:String>
+    <sys:String x:Key="54AE">试剂2臂B(R2B)吸液超时。</sys:String>
+    <sys:String x:Key="54DF">试剂2臂B(R2B)加液超时。</sys:String>
+    <sys:String x:Key="54RD">试剂2臂B(R2B)洗针超时。</sys:String>
+    <sys:String x:Key="54UF">试剂2臂B(R2B)抬起针超时。</sys:String>
+
+    <!--试剂盘-->
+    <sys:String x:Key="51LS">试剂盘1复位超时。</sys:String>
+    <sys:String x:Key="51LL">试剂盘1定位超时。</sys:String>
+    <sys:String x:Key="53LS">试剂盘2复位超时。</sys:String>
+    <sys:String x:Key="53LL">试剂盘2复位超时。</sys:String>
+
+    <!--滑轨和小车-->
+    <sys:String x:Key="49HA">滑轨A复位超时。</sys:String>
+    <sys:String x:Key="49HB">滑轨A定位超时。</sys:String>
+    <sys:String x:Key="49HD">滑轨A送孵育超时。</sys:String>
+
+    <sys:String x:Key="54HE">滑轨B复位超时。</sys:String>
+    <sys:String x:Key="54HF">滑轨B定位超时。</sys:String>
+    <sys:String x:Key="54HH">滑轨B送孵育超时。</sys:String>
+
+    <sys:String x:Key="55HP">滑轨C复位超时。</sys:String>
+    <sys:String x:Key="55HS">滑轨C左定位超时。</sys:String>
+    <sys:String x:Key="55EB">滑轨C右定位超时。</sys:String>
+    <sys:String x:Key="55HR">滑轨C送孵育超时。</sys:String>
+
+    <sys:String x:Key="56HX">滑轨D复位超时。</sys:String>
+    <sys:String x:Key="56HT">滑轨D左定位超时。</sys:String>
+    <sys:String x:Key="56EF">滑轨D右定位超时。</sys:String>
+    <sys:String x:Key="56HZ">滑轨D送孵育超时。</sys:String>
+
+    <sys:String x:Key="55HI">滑轨E复位超时。</sys:String>
+    <sys:String x:Key="55HJ">滑轨E定位超时。</sys:String>
+    <sys:String x:Key="55HL">滑轨E送孵育超时。</sys:String>
+
+    <sys:String x:Key="59MV1">孵育箱小车复位超时。</sys:String>
+    <sys:String x:Key="59MV2">孵育箱小车定位到滑轨A超时。</sys:String>
+    <sys:String x:Key="59MV13">孵育箱小车定位到滑轨A偏超时。</sys:String>
+    <sys:String x:Key="59MV3">孵育箱小车定位到滑轨B超时。</sys:String>
+    <sys:String x:Key="59MV12">孵育箱小车定位到滑轨B偏超时。</sys:String>
+    <sys:String x:Key="59MV4">孵育箱小车定位到滑轨C超时。</sys:String>
+    <sys:String x:Key="59MV9">孵育箱小车定位到滑轨C偏超时。</sys:String>
+    <sys:String x:Key="59MV14">孵育箱小车定位到滑轨D超时。</sys:String>
+    <sys:String x:Key="59MV15">孵育箱小车定位到滑轨D偏超时。</sys:String>
+    <sys:String x:Key="59MV5">孵育箱小车定位到滑轨E超时。</sys:String>
+    <sys:String x:Key="59MV10">孵育箱小车定位到滑轨E偏超时。</sys:String>
+    <sys:String x:Key="59MV6">孵育箱小车定位到检测仓超时。</sys:String>
+    <sys:String x:Key="59MV11">孵育箱小车定位到检测仓偏超时。</sys:String>
+    <sys:String x:Key="59GD">小车定位到孵育床的某个位置超时。</sys:String>
+    <sys:String x:Key="59DS">孵育箱小车将反应条放入孵育床超时。</sys:String>
+    <sys:String x:Key="59GS">孵育箱小车从孵育床取出反应条超时。</sys:String>
+    
+    <!--孵育箱和试剂箱的温控-->
+    <sys:String x:Key="68BG">开始温控命令超时。</sys:String>
+    <sys:String x:Key="68ST">停止温控命令超时。</sys:String>
+    <sys:String x:Key="68TS">设置孵育箱温度命令超时。</sys:String>
+    <sys:String x:Key="68TT">设置试剂箱温度命令超时。</sys:String>
+    <!--孵育床摇晃-->
+    <sys:String x:Key="59MV17">复位孵育床超时。</sys:String>
+    <sys:String x:Key="59MV18">停止孵育床摇晃超时。</sys:String>
+    <!--洗涤-->
+    <sys:String x:Key="55HQ">洗涤1放下到杯底超时。</sys:String>
+    <sys:String x:Key="55EA">洗涤1放下到杯面超时。</sys:String>
+    <sys:String x:Key="55HU">洗涤1抬起超时。</sys:String>
+    <sys:String x:Key="56HY">洗涤2放下到杯底超时。</sys:String>
+    <sys:String x:Key="56EC">洗涤2放下到杯面超时。</sys:String>
+    <sys:String x:Key="56HV">洗涤2抬起超时。</sys:String>
+    <!--加底物-->
+    <sys:String x:Key="55AH">旋臂复位超时。</sys:String>
+    <sys:String x:Key="56AZ">泵复位超时。</sys:String>
+    <sys:String x:Key="56AY">吸底物超时。</sys:String>
+    <sys:String x:Key="55AG">悬臂单孔定位超时。</sys:String>
+    <sys:String x:Key="55AI">悬臂双孔定位超时。</sys:String>
+    
+    <sys:String x:Key="56AS">加底物超时。</sys:String>
+    <!--光电检测-->
+    <sys:String x:Key="57MB1">光电检测系统复位超时。</sys:String>
+    <sys:String x:Key="57MB2">光电检测滑轨到孵育超时。</sys:String>
+    <sys:String x:Key="57MB3">光电检测定位反应条超时。</sys:String>
+    <sys:String x:Key="57MC">光电检测定位反应杯超时。</sys:String>
+    <sys:String x:Key="57MB5">光电检测丢弃反应条超时。</sys:String>
+    <sys:String x:Key="57MB6">将反应条定位到吸废液位超时。</sys:String>
+    <sys:String x:Key="57MB7">收起检测箱中废液针超时。</sys:String>
+    <sys:String x:Key="57MB8">抬起光电检测探头超时。</sys:String>
+    
+    <sys:String x:Key="69QZ">检测光强值超时。</sys:String>
+    <!--泵命令-->
+    <sys:String x:Key="67OP">开泵命令超时。</sys:String>
+    <sys:String x:Key="67CL">关泵命令超时。</sys:String>
+    <!--endregion-->
+    <sys:String x:Key="128CX">开门次数查询超时。</sys:String>
+    <!--endregion-->
+</ResourceDictionary>

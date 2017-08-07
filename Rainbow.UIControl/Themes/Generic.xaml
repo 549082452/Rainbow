@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/BaseWindow.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/BaseTabItem.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/BaseTabControl.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/BaseButton.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/AppStyle.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/BaseBusyControl.xaml"/>
+        
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/StringResource.zh-CN.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/AppStyle.xaml" />
+        <ResourceDictionary Source="/Rainbow.UIControl;component/Themes/BLLString.zh-CN.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

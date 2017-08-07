@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:base="clr-namespace:ClipperBaseUI.Controls">
+    <Style TargetType="{x:Type Window}" x:Key="WindowStyle">
+        <Setter Property="AllowsTransparency" Value="true"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <!--<Setter Property="ResizeMode" Value="CanResizeWithGrip"/>-->
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}" x:Name="WindowTemplate" >
+                    <Grid Margin="5" Name="grid1"  RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Rectangle Fill="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"    >
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="0" />
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"    
+                        BorderThickness="{TemplateBinding BorderThickness}"    
+                        Padding="{TemplateBinding Margin}"    
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <!--<Grid.Background>
+                                    <ImageBrush ImageSource="/Clipper;component/Skin/Bd/background_mainwnd.png"/>
+                                    <SolidColorBrush Color="#f6f5f6"></SolidColorBrush>
+                                </Grid.Background>-->
+                                <Border x:Name="WinHead" Background="{DynamicResource WindowHeaderBrush}" HorizontalAlignment="Stretch">
+                                    <Grid>
+                                        <Label Content="{TemplateBinding Title}" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                                        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="5,0">
+                                           
+                                            <base:BaseButton HorizontalAlignment="Right"  ToolTip="{DynamicResource SettingTip}" x:Name="btnSetting" VerticalAlignment="Top" Width="27" Height="22" >
+                                                <base:BaseButton.MyMoverBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mmm.png"/>
+                                                </base:BaseButton.MyMoverBrush>
+                                                <base:BaseButton.MyEnterBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mme.png"/>
+                                                </base:BaseButton.MyEnterBrush>
+                                                <base:BaseButton.Background>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mmn.png"/>
+                                                </base:BaseButton.Background>
+                                            </base:BaseButton>
+
+                                            <base:BaseButton HorizontalAlignment="Right" x:Name="btnMin" 
+                                                     ToolTip="{DynamicResource MinTip}" VerticalAlignment="Top" Width="27" Height="22" >
+                                                <base:BaseButton.MyMoverBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mim.png"/>
+                                                </base:BaseButton.MyMoverBrush>
+                                                <base:BaseButton.MyEnterBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mie.png"/>
+                                                </base:BaseButton.MyEnterBrush>
+                                                <base:BaseButton.Background>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/min.png"/>
+                                                </base:BaseButton.Background>
+                                            </base:BaseButton>
+
+                                            <base:BaseButton HorizontalAlignment="Right" x:Name="btnMax"
+                                                     ToolTip="{DynamicResource MaxTip}" VerticalAlignment="Top" Width="27" Height="22"  >
+                                                <base:BaseButton.MyMoverBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mxe.png"/>
+                                                </base:BaseButton.MyMoverBrush>
+                                                <base:BaseButton.MyEnterBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mxe.png"/>
+                                                </base:BaseButton.MyEnterBrush>
+                                                <base:BaseButton.Background>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/mxn.png"/>
+                                                </base:BaseButton.Background>
+                                            </base:BaseButton>
+
+                                            <base:BaseButton HorizontalAlignment="Right"  ToolTip="{DynamicResource CloseTip}" x:Name="btnClose"  VerticalAlignment="Top" Width="27" Height="22" >
+                                                <base:BaseButton.MyMoverBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/xm.png"/>
+                                                </base:BaseButton.MyMoverBrush>
+                                                <base:BaseButton.MyEnterBrush>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/xe.png"/>
+                                                </base:BaseButton.MyEnterBrush>
+                                                <base:BaseButton.Background>
+                                                    <ImageBrush ImageSource="/ClipperBaseUI;component../Skin/Button/xn.png"/>
+                                                </base:BaseButton.Background>
+                                            </base:BaseButton>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                <AdornerDecorator  Grid.Row="1">
+                                    <ContentPresenter/>
+                                </AdornerDecorator>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Window.Loaded">
+                            <BeginStoryboard >
+                                <Storyboard >
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3" FillBehavior="HoldEnd" />
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid1">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.8"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1.01"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid1">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0.8"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1.01"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

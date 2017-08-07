@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="Rainbow.MeasureUserCtrl.UserDye"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0"  Name="datDye" AutoGenerateColumns="False" 
+                                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserDeleteRows="False"
+                                           AlternatingRowBackground="{StaticResource AlternatingRowBrush}" AlternationCount="2"  SelectionMode="Single" CellEditEnding="datDye_CellEditEnding" RowEditEnding="datDye_RowEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Dye" Binding="{Binding Dye,Mode=TwoWay}"  ></DataGridTextColumn>
+                <DataGridTextColumn Header="Unit" Binding="{Binding Unit,Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Coeff(I/mode-cm)" Binding="{Binding Coeff,Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Analysis Wavelength(nm)" Binding="{Binding AnalysisWavelength,Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="260nm Correction" Binding="{Binding Correction_260nm,Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="280nm Correction" Binding="{Binding Correction_280nm,Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Show" Binding="{Binding IsShow,Mode=TwoWay}"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Save" Name="btnSaveDye" Click="btnSaveDye_Click" Grid.Row="1"></Button>
+    </Grid>
+</UserControl>

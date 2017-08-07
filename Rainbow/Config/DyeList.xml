@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DyeList>
+  <Dye>
+    <IsShow>true</IsShow>
+    <IsLock>true</IsLock>
+    <Dye>Cy3</Dye>
+    <Unit>uM</Unit>
+    <Coeff>1.5E+5</Coeff>
+    <AnalysisWavelength>550</AnalysisWavelength>
+    <Correction_260nm>0.04</Correction_260nm>
+    <Correction_280nm>0.05</Correction_280nm>
+  </Dye>
+</DyeList>

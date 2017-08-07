@@ -1,0 +1,597 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xml:space="preserve">
+    
+    <!--region 主界面-->
+    <sys:String x:Key="MainTitle">全自动化学发光分析仪</sys:String>
+    <sys:String x:Key="AskMainCloseRunning">仪器正在运行，确认关闭！</sys:String>
+    <sys:String x:Key="AskMainClose">确定关闭软件！</sys:String>
+    <sys:String x:Key="RunSoftWare">启动软件.</sys:String>
+    <sys:String x:Key="CloseSoftWare">关闭软件.</sys:String>
+    <!--endregion-->
+    
+    <!--region 启动检测-->
+    <sys:String x:Key="Run">启动</sys:String>
+    <sys:String x:Key="Pause">暂停</sys:String>
+    <sys:String x:Key="CanNotRun">请排除故障后运行！</sys:String>
+    <sys:String x:Key="NoWorkSheet">请在工作列表中添加工作内容。</sys:String>
+    <sys:String x:Key="ReagentInsufficient">检测所需试剂不足，请查看试剂设置。</sys:String>
+    <sys:String x:Key="IsContinue">确定故障已排除，可以继续运行？</sys:String>
+    <!--endregion-->
+    
+    <!--region 自检-->
+    <sys:String x:Key="Self-checking">仪器自检</sys:String>
+    <sys:String x:Key="PleaseSelfCheck">请先完成仪器自检！</sys:String>
+    <sys:String x:Key="AskSelfCheck">仪器尚未通过自检，是否立即自检？</sys:String>
+    <sys:String x:Key="WaitSelfCheck">仪器正在自检，请稍后...</sys:String>
+    <sys:String x:Key="SelfCheckStart">开始自检</sys:String>
+    <sys:String x:Key="SelfCheckComplete">自检完成。</sys:String>
+    <sys:String x:Key="SelfCheckTime">用时：</sys:String>
+    <sys:String x:Key="SampleSys">样本系统</sys:String>
+    <sys:String x:Key="FillSys">加注系统</sys:String>
+    <sys:String x:Key="ReagentSys">试剂系统</sys:String>
+    <sys:String x:Key="MoveSys">传送系统</sys:String>
+    <sys:String x:Key="IncubationSys">孵育系统</sys:String>
+    <sys:String x:Key="WaitUp">等待升温中...</sys:String>
+    <sys:String x:Key="DetectSys">光电检测系统</sys:String>
+    <sys:String x:Key="DetectDark">光电检测暗计数：{0}。</sys:String>
+    <sys:String x:Key="Detect0">光电检测系统故障，请联系工程师。</sys:String>
+    <sys:String x:Key="Detect50">暗计数过大({0})，请联系工程师。</sys:String>
+    <sys:String x:Key="WashSys">洗涤系统</sys:String>
+    <sys:String x:Key="GasSys">气路液路</sys:String>
+    <!-- EndRegion -->
+    
+    <!--region运行监视-->
+    <sys:String x:Key="Monitor">运行监视</sys:String>
+    <sys:String x:Key="MonitorView">仪器图</sys:String> 
+    <sys:String x:Key="NowStripCount">当前反应条的数量</sys:String>
+    <sys:String x:Key="NeedStripCount">所需反应条的数量</sys:String>
+    <sys:String x:Key="StripInCountDown">反应条进样倒计时</sys:String>
+    <sys:String x:Key="ShelfInCount">待检样本架的数量</sys:String>
+    <sys:String x:Key="ShelfInCountDown">样本架进样倒计时</sys:String>
+    <sys:String x:Key="ShelfOutCount">待回收样本架的数量</sys:String>
+    <sys:String x:Key="ShelfOutCountDown">样本架出样倒计时</sys:String>
+    <sys:String x:Key="BoxTemperature">孵育箱中的温度</sys:String>
+    <sys:String x:Key="KitTempurature">试剂仓中的温度</sys:String>
+    <sys:String x:Key="IncubationStripCount">孵育箱中的反应条数量</sys:String>
+    <sys:String x:Key="WaitStripCount">恒温等待的反应条数目</sys:String>
+    <sys:String x:Key="RunningStripCount">运行中的反应条数量</sys:String>
+    <sys:String x:Key="CompleteStrip">完成检测的反应条数目</sys:String>
+    <sys:String x:Key="CompleteCountDown">完成检测倒计时</sys:String>
+    <sys:String x:Key="NextResultCD">出下一批结果倒计时</sys:String>
+    <!--endregion-->
+    
+    <!--region 状态栏 仪器数据-->
+    <sys:String x:Key="DiscardSolutionState">废液瓶状态</sys:String>
+    <sys:String x:Key="RinseFlaskState">冲洗液瓶状态</sys:String>
+    <sys:String x:Key="WashFlaskVolume">洗涤液状态</sys:String>
+    <sys:String x:Key="SubstrateState">底物瓶状态</sys:String>
+    
+    <sys:String x:Key="DetectSysState">光电检测系统状态</sys:String>
+    <sys:String x:Key="IncubationBoxState">孵育箱状态</sys:String>
+    <sys:String x:Key="ReagentPlate1State">试剂盘1状态</sys:String>
+    <sys:String x:Key="ReagentPlate2State">试剂盘2状态</sys:String>
+    
+    <sys:String x:Key="RecycleState">反应条回收仓状态</sys:String>
+    <sys:String x:Key="ReactionStripHouseState">反应条进样仓状态(单击可添加反应条)</sys:String>
+    <sys:String x:Key="SampleHouseInState">样本架进样仓状态</sys:String>
+    <sys:String x:Key="SampleHouseOutState">样本架回收仓状态</sys:String>
+    <sys:String x:Key="ClipperState">仪器运行状态</sys:String>
+    <sys:String x:Key="MaintainDays">距上次保养{0}天</sys:String>
+    
+    <sys:String x:Key="Version">版本：1.0</sys:String>
+    <sys:String x:Key="ConnectState">通信状态：</sys:String>
+    <sys:String x:Key="ConnectFail">通信连接失败，请检测设备后重启软件。</sys:String>
+    
+    <sys:String x:Key="MonitorData">仪器数据</sys:String>
+    <!--endregion-->
+ 
+    <!--region 试剂盒设置-->
+    <sys:String x:Key="Kit">试剂设置</sys:String>
+    <sys:String x:Key="SubstrateRemaind">底物余量</sys:String>
+    <sys:String x:Key="SubstrateMountDate">安装日期：</sys:String>
+    <sys:String x:Key="ChangeSubstrate">更换底物</sys:String>
+    <sys:String x:Key="CompleteChange">完成更换</sys:String>
+    <sys:String x:Key="ReagentMount">试剂安装</sys:String>
+    <sys:String x:Key="ReagentUnload">试剂卸载</sys:String>
+    <sys:String x:Key="ReagentUnload1">盘1卸载</sys:String>
+    <sys:String x:Key="ReagentUnload2">盘2卸载</sys:String>
+    <sys:String x:Key="ReagentHoleNumber">孔位号</sys:String>
+    <sys:String x:Key="AllowTimes">允许检测次数</sys:String>
+    <sys:String x:Key="Kit1Item">盘1检测项</sys:String>
+    <sys:String x:Key="Kit2Item">盘2检测项</sys:String>
+    <sys:String x:Key="KitRemaindTimes">试剂剩余次数</sys:String>
+    <sys:String x:Key="Kit1RemaindTimes">盘1剩余次数</sys:String>
+    <sys:String x:Key="Kit2RemaindTimes">盘2剩余次数</sys:String>
+    <sys:String x:Key="Kit1Barcode">盘1条码</sys:String>
+    <sys:String x:Key="Kit1LoadTime">盘1安装日期</sys:String>
+    <sys:String x:Key="Kit2Barcode">盘2条码</sys:String>
+    <sys:String x:Key="Kit2LoadTime">盘2安装日期</sys:String>
+    <sys:String x:Key="DetectResult">检测结果</sys:String>
+    <sys:String x:Key="ReagentBarcodeInput">输入试剂条码</sys:String>
+    <sys:String x:Key="NoKitPositionTip">请选择一个试剂位置！</sys:String>
+    <sys:String x:Key="IsUnLoadReagent">是否卸载试剂？</sys:String>
+    <sys:String x:Key="ReagentLack">试剂不足</sys:String>
+    <!--endregion-->
+    
+    <!--region 检测原始结果-->
+    <sys:String x:Key="OrignalResult">原始结果</sys:String>
+    <sys:String x:Key="ResultSearchTip">按下面任何或所有标准查询</sys:String>
+    <sys:String x:Key="SearchByTime">按时间查询</sys:String>
+    <sys:String x:Key="SearchBySampleID">按样本号查询</sys:String>
+    <sys:String x:Key="SearchByItem">按检测项查询</sys:String>
+    <sys:String x:Key="SearchFailure">查询异常结果</sys:String>
+    <sys:String x:Key="SearchDetecting">查询正检结果</sys:String>
+    <sys:String x:Key="SearchDetected">查询已检结果</sys:String>
+    <sys:String x:Key="Result">结果</sys:String>
+    <sys:String x:Key="Describe">描述</sys:String>
+    <sys:String x:Key="State">状态</sys:String>
+    <sys:String x:Key="DeleteResult">删除记录</sys:String>
+    <sys:String x:Key="ResultStatistics">统计分析</sys:String>
+    <sys:String x:Key="ResultReCalc">重新计算浓度</sys:String>
+    <sys:String x:Key="SaveReCalc">保存重新计算浓度</sys:String>
+    <sys:String x:Key="ToExcel">导出到Excel</sys:String>
+    <sys:String x:Key="PrePrint">打印预览</sys:String>
+    <sys:String x:Key="NoDataToExcel">没有要导出的数据</sys:String>
+    <!--endregion-->
+    
+    <!--region 标定曲线-->
+    <sys:String x:Key="StandardInfo">标定曲线</sys:String>
+    <sys:String x:Key="StandardType">类型</sys:String>
+    <sys:String x:Key="StandardChrome">浓度值</sys:String>
+    <sys:String x:Key="StandardLight">发光值</sys:String>
+    <sys:String x:Key="StandardChromeX">浓度值(X)</sys:String>
+    <sys:String x:Key="StandardLightY">发光值(Y)</sys:String>
+    <sys:String x:Key="StandardReport">标准曲线报告</sys:String>
+    <sys:String x:Key="StandardItem">项目名称：</sys:String>
+    <sys:String x:Key="StandardCount">标定点数：</sys:String>
+    <sys:String x:Key="StandardItemShort">缩写：</sys:String>
+    <sys:String x:Key="CorrelationCoefficient">相关系数：</sys:String>
+    <sys:String x:Key="CalculationMethod">计算方法：</sys:String>
+    <sys:String x:Key="StandardDate">定标时间：</sys:String>
+    <sys:String x:Key="S1">标定1</sys:String>
+    <sys:String x:Key="S2">标定2</sys:String>
+    <sys:String x:Key="S3">标定3</sys:String>
+    <sys:String x:Key="S4">标定4</sys:String>
+    <sys:String x:Key="S5">标定5</sys:String>
+    <sys:String x:Key="S6">标定6</sys:String>
+    <sys:String x:Key="S7">标定7</sys:String>
+    <sys:String x:Key="A1">校正1</sys:String>
+    <sys:String x:Key="A2">校正2</sys:String>
+    <sys:String x:Key="SelectCurveTip">请选择一条曲线！</sys:String>
+    <sys:String x:Key="SaveCurve">保存曲线</sys:String>
+    <sys:String x:Key="HistoryCurve">历史曲线</sys:String>
+    <sys:String x:Key="HistoryItem">检测项：</sys:String>
+    <sys:String x:Key="HistoryDateSelect">日期范围：</sys:String>
+    <sys:String x:Key="DeleteCurve">删除选中曲线</sys:String>
+    <sys:String x:Key="SetCurve">设定为计算曲线</sys:String>
+    <sys:String x:Key="PrintCurve">打印曲线</sys:String>
+    <sys:String x:Key="NoStandardInfo">未找到标定曲线数据。</sys:String>
+    
+    <!--endregion-->
+    
+    <!--region 质量控制-->
+    <sys:String x:Key="QC">质量控制</sys:String>
+    <sys:String x:Key="QCCurve">质控图</sys:String>
+    <sys:String x:Key="Q1Record">Q1记录</sys:String>
+    <sys:String x:Key="Q2Record">Q2记录</sys:String>
+    <sys:String x:Key="QCData">质控数据</sys:String>
+    <sys:String x:Key="Number">编号</sys:String>
+    <sys:String x:Key="QCValue1">Q1发光值</sys:String>
+    <sys:String x:Key="QCValue2">Q2发光值</sys:String>
+    <sys:String x:Key="QCRange1">Q1参考范围：</sys:String>
+    <sys:String x:Key="QCRange2">Q2参考范围：</sys:String>
+    <sys:String x:Key="Date">日期</sys:String>
+    <sys:String x:Key="Deviation1">一倍偏差范围</sys:String>
+    <sys:String x:Key="Deviation2">二倍偏差范围</sys:String>
+    <sys:String x:Key="Deviation3">三倍偏差范围</sys:String>
+    <sys:String x:Key="Deviation4">超出三倍偏差</sys:String>
+    <sys:String x:Key="Average">平均值：</sys:String>
+    <sys:String x:Key="SD">标准差：</sys:String>
+    <sys:String x:Key="CV">变异系数(%)：</sys:String>
+    <sys:String x:Key="SaveModify">保存修改</sys:String>
+    
+    <!--endregion-->
+    
+    <!--region 检验报告-->
+    <sys:String x:Key="DetectReport">检测报告</sys:String>
+    <sys:String x:Key="ReportName">报告名称：</sys:String>
+    <sys:String x:Key="Explain">说明：</sys:String>
+    <sys:String x:Key="SearchByDetectDate">按检验日期查询</sys:String>
+    <sys:String x:Key="SearchByName">按姓名查询</sys:String>
+    <sys:String x:Key="SearchByPatientID">按病人ID查询</sys:String>
+    <sys:String x:Key="SearchByDetectVariety">按系统查询</sys:String>
+    <sys:String x:Key="ItemCode">代码</sys:String>
+    <sys:String x:Key="AddReport">添加记录</sys:String>
+    <sys:String x:Key="DeleteReport">删除记录</sys:String>
+    <sys:String x:Key="PrePrintSingle">单列打印预览</sys:String>
+    <sys:String x:Key="PrePrintDouble">双列打印预览</sys:String>
+    <sys:String x:Key="TendencyChart">趋势图</sys:String>
+    <sys:String x:Key="PrintView">打印预览</sys:String>
+    <!--endregion-->
+    
+    <!--region 系统维护-->
+    <sys:String x:Key="Maintenance">系统维护</sys:String> 
+    <sys:String x:Key="DailyMaintain">日常保养</sys:String>
+    <sys:String x:Key="ClearSubstrate">底物清理</sys:String>
+    <sys:String x:Key="ClearCanal">管路清理</sys:String>
+    <sys:String x:Key="ClearShotTimes">每次清洗十秒，请填写清洗次数：</sys:String>
+    <sys:String x:Key="ClearShot">加注针清理</sys:String>
+    
+    <sys:String x:Key="WeekMaintenance">周保养</sys:String>
+    
+    <sys:String x:Key="MaintenanceLog">保养日志</sys:String>
+ 
+    
+    <!--endregion-->
+    
+    <!--region 工程师模块-->
+    <sys:String x:Key="EngineerModule">工程师模块</sys:String>
+    <sys:String x:Key="Cmd">命令</sys:String>
+    <sys:String x:Key="Reset">复位</sys:String>
+    <sys:String x:Key="Adjustment">微调</sys:String>
+    <sys:String x:Key="ArmAdjust">臂微调</sys:String>
+    <sys:String x:Key="SelectArm">选择机械臂</sys:String>
+    <sys:String x:Key="DC">限位</sys:String>
+    <sys:String x:Key="DE">定位</sys:String>
+    <sys:String x:Key="DI">吸液</sys:String>
+    <sys:String x:Key="SA">样本臂SA</sys:String>
+    <sys:String x:Key="SB">样本臂SB</sys:String>
+    <sys:String x:Key="R1A">试剂臂R1A</sys:String>
+    <sys:String x:Key="R1B">试剂臂R1B</sys:String>
+    <sys:String x:Key="R2A">试剂臂R2A</sys:String>
+    <sys:String x:Key="R2B">试剂臂R2B</sys:String>
+    <!--endregion-->
+    
+    <!--region 工作列表-->
+    <sys:String x:Key="WorkSheet">工作列表</sys:String>
+    <sys:String x:Key="TestTubeSelfBarCode">样本架条码</sys:String>
+    <sys:String x:Key="TubeHoleNumber">孔位号</sys:String>
+    <sys:String x:Key="AddTestTubeSelf">添加样本架</sys:String>
+    <sys:String x:Key="SaveTestTubeSelf">保存样本架</sys:String>
+    <sys:String x:Key="DeleteTestTubeSelf">删除样本架</sys:String>
+    <sys:String x:Key="AddNewShelf">追加样本</sys:String>
+    <sys:String x:Key="AllBarcode">扫描样本条码</sys:String>
+    <sys:String x:Key="SheetStatistics">检测信息统计</sys:String>
+    <sys:String x:Key="DetectMethodTitle">检测方法：</sys:String>
+    <sys:String x:Key="OneStepMethod">一步法</sys:String>
+    <sys:String x:Key="TwoStepMethod">两步法</sys:String>
+    <sys:String x:Key="GeneralSample">普通样本</sys:String>
+    <sys:String x:Key="QCSample">质控品</sys:String>
+    <sys:String x:Key="EmergencySample">紧急样本</sys:String>
+    <sys:String x:Key="BarcodeNotNull">条码号不能为空。</sys:String>
+    <sys:String x:Key="SelectShelf">请选中一个样本架。</sys:String>
+    <sys:String x:Key="BarcodeRepeat">输入的条码号已存在。</sys:String>
+    <sys:String x:Key="IsDeleteShelf">确定要删除样本架吗？</sys:String>
+    <sys:String x:Key="IsChangeDetectMethod">确定要切换检测方法吗？</sys:String>
+    
+    <sys:String x:Key="StatisticsAll">总体统计</sys:String>
+    <sys:String x:Key="StatisticsItem">分项目统计</sys:String>
+    <sys:String x:Key="TotalItem">检测项目数</sys:String>
+    <sys:String x:Key="TotalStrip">反应条数</sys:String>
+    <sys:String x:Key="TotalCup">反应杯数</sys:String>
+    
+    <!--endregion-->
+    
+    <!--region 病人信息，样本信息-->
+    <sys:String x:Key="PatientInfo">病人信息</sys:String>
+    <sys:String x:Key="PatientInput">病人信息输入</sys:String>
+    <sys:String x:Key="SampleInfo">样本信息</sys:String>
+    <sys:String x:Key="SampleEdit">样本信息编辑</sys:String>
+    <sys:String x:Key="DetectItemSet">检测项设置</sys:String>
+    <sys:String x:Key="HBCatagory">乙肝类</sys:String>
+    <sys:String x:Key="SexCatagory">性腺类</sys:String>
+    <sys:String x:Key="ThyroidCatagory">甲状腺类</sys:String>
+    <sys:String x:Key="DiabetesCatagory">糖尿病类</sys:String>
+    <sys:String x:Key="HepaticFibrosisCatagory">肝纤维化类</sys:String>
+    <sys:String x:Key="KnubCatagory">肿瘤类</sys:String>
+    
+    <sys:String x:Key="PatientID">病人编号</sys:String>
+    <sys:String x:Key="PatientName">姓名</sys:String>
+    <sys:String x:Key="PatientSex">性别</sys:String>
+    <sys:String x:Key="PatientAge">年龄</sys:String>
+    <sys:String x:Key="Section">科室</sys:String>
+    <sys:String x:Key="InfectedPatch">病区</sys:String>
+    <sys:String x:Key="BedNumber">床号</sys:String>
+    <sys:String x:Key="SampleID">样本号</sys:String>
+    <sys:String x:Key="SampleType">样本类型</sys:String>
+    <sys:String x:Key="SampleTip">样本说明</sys:String>
+    <sys:String x:Key="CreateTime">录入日期</sys:String>
+    <sys:String x:Key="DetectDate">检验日期</sys:String>
+    <sys:String x:Key="DetectDoctor">检验医生</sys:String>
+    <sys:String x:Key="Assessor">审核</sys:String>
+    <sys:String x:Key="Note">备注</sys:String>
+    <sys:String x:Key="ClearItem">清空检测项</sys:String>
+    
+    <sys:String x:Key="DetectItemsNoChange">不能在此处修改检测项，请在病人信息中修改。</sys:String>
+    <sys:String x:Key="RepeatSample">输入的样本编号已存在。</sys:String>
+    <sys:String x:Key="SelectSample">请选择一条样本信息。</sys:String>
+    <!--endregion-->
+    
+    <!--region 数据管理-->
+    <sys:String x:Key="DataManage">数据管理</sys:String>
+    <sys:String x:Key="DetectItems">检测项</sys:String>
+    <!--region 基本信息-->
+    <sys:String x:Key="DetectItemBase">基本信息</sys:String>
+    <sys:String x:Key="DetectName">全称</sys:String>
+    <sys:String x:Key="DetectVarietyID">项目类别</sys:String>
+    <sys:String x:Key="BloodAmount">样本用量</sys:String>
+    <sys:String x:Key="ReagentAmount1">试剂1用量</sys:String>
+    <sys:String x:Key="ReagentAmount2">试剂2用量</sys:String>
+    <sys:String x:Key="ReagentAmount3">试剂3用量</sys:String>
+    <sys:String x:Key="IncubationTime">孵育时间</sys:String>
+    <sys:String x:Key="IncubationTimeStep1">两步法孵育时间1</sys:String>
+    <sys:String x:Key="IncubationTimeStep2">两步法孵育时间2</sys:String>
+    <sys:String x:Key="DetectTime">恒温等待时间</sys:String>
+    <sys:String x:Key="StandardAmount">标准品用量</sys:String>
+    <sys:String x:Key="FittingApproach">拟合方程</sys:String>
+    <sys:String x:Key="CorrelationThreshold">相关系数阈值</sys:String>
+    <sys:String x:Key="CoordinateID">坐标类型</sys:String>
+    <sys:String x:Key="StandardState">标定状态</sys:String>
+    <sys:String x:Key="ResultAnalyticalMethod">结果分析方法</sys:String>
+    <sys:String x:Key="QuantitativeMethod">定量分析</sys:String>
+    <sys:String x:Key="QualitativeMethod">定性分析</sys:String>
+    <!--endregion-->
+    <!--region 定性结果对照表-->
+    <sys:String x:Key="ResultReference">定性结果对照表</sys:String>
+    <sys:String x:Key="RRsTopLimit">参考范围上限</sys:String>
+    <sys:String x:Key="RRsLowLimit">参考范围下限</sys:String>
+    <sys:String x:Key="HighLimit">极限范围上限</sys:String>
+    <sys:String x:Key="LowLimit">极限范围下限</sys:String>
+    <sys:String x:Key="Unit">单位</sys:String>
+    <sys:String x:Key="QualitativeA">定性参数A</sys:String>
+    <sys:String x:Key="QualitativeB">定性参数B</sys:String>
+    <sys:String x:Key="QualitativeC">定性参数C</sys:String>
+    <sys:String x:Key="QualitativeD">定性参数D</sys:String>
+    <sys:String x:Key="CutOff">截断值</sys:String>
+    <sys:String x:Key="CutOff_K">截断值系数</sys:String>
+    <sys:String x:Key="QualitativeFormat">定性结果格式</sys:String>
+    <sys:String x:Key="NegativeLight1">阴性对照发光值1</sys:String>
+    <sys:String x:Key="NegativeLight2">阴性对照发光值2</sys:String>
+    <sys:String x:Key="PositiveLight1">阳性对照发光值1</sys:String>
+    <sys:String x:Key="PositiveLight2">阳性对照发光值2</sys:String>
+    
+    <!--endregion-->
+    <!--region 质控对照表-->
+    <sys:String x:Key="QCReference">质控对照表</sys:String>
+    <sys:String x:Key="ChromeTop1">质控1浓度上限</sys:String>
+    <sys:String x:Key="ChromeLow1">质控1浓度下限</sys:String>
+    <sys:String x:Key="ChromeTop2">质控2浓度上限</sys:String>
+    <sys:String x:Key="ChromeLow2">质控2浓度下限</sys:String>
+    <sys:String x:Key="ChromeMean1">质控1浓度均值</sys:String>
+    <sys:String x:Key="StandardDeviation1">质控1浓度标准差</sys:String>
+    <sys:String x:Key="ChromeMean2">质控2浓度均值</sys:String>
+    <sys:String x:Key="StandardDeviation2">质控2浓度标准差</sys:String>
+    <!--endregion-->
+    <!--region 定标数据-->
+    <sys:String x:Key="StandardInfoBase">定标数据模板</sys:String>
+    <sys:String x:Key="StandardData">定标数据</sys:String>
+    <sys:String x:Key="StandardCountInGrid">标定个数</sys:String>
+    <sys:String x:Key="StandardLight1">标定发光值1</sys:String>
+    <sys:String x:Key="StandardLight2">标定发光值2</sys:String>
+    <sys:String x:Key="StandardLight3">标定发光值3</sys:String>
+    <sys:String x:Key="StandardLight4">标定发光值4</sys:String>
+    <sys:String x:Key="StandardLight5">标定发光值5</sys:String>
+    <sys:String x:Key="StandardLight6">标定发光值6</sys:String>
+    <sys:String x:Key="StandardLight7">标定发光值7</sys:String>
+    <sys:String x:Key="StandardChrome1">标定浓度值1</sys:String>
+    <sys:String x:Key="StandardChrome2">标定浓度值2</sys:String>
+    <sys:String x:Key="StandardChrome3">标定浓度值3</sys:String>
+    <sys:String x:Key="StandardChrome4">标定浓度值4</sys:String>
+    <sys:String x:Key="StandardChrome5">标定浓度值5</sys:String>
+    <sys:String x:Key="StandardChrome6">标定浓度值6</sys:String>
+    <sys:String x:Key="StandardChrome7">标定浓度值7</sys:String>
+    <sys:String x:Key="AdjustLight1">校正1发光值</sys:String>
+    <sys:String x:Key="AdjustLight2">校正2发光值</sys:String>
+    <sys:String x:Key="AdjustChrome1">校正1浓度值</sys:String>
+    <sys:String x:Key="AdjustChrome2">校正2浓度值</sys:String>
+    
+    <sys:String x:Key="LightChromeRelativity">浓度发光值相关性</sys:String>
+    <sys:String x:Key="StandardDateInGrid">标定日期</sys:String>
+    <sys:String x:Key="IsInUse">正在使用</sys:String>
+    <!--endregion-->
+    <!--region 项目类别-->
+    <sys:String x:Key="VarietySet">类别设置</sys:String>
+    <sys:String x:Key="VarietyName">类别名称</sys:String>
+    <sys:String x:Key="OrderNumber">显示顺序</sys:String>
+    <sys:String x:Key="IsShow">是否显示</sys:String>
+    <sys:String x:Key="Show">显示</sys:String>
+    <sys:String x:Key="Hide">隐藏</sys:String>
+    <!--endregion-->
+    <!--region 试剂信息-->
+    <sys:String x:Key="ReagentInfo">试剂信息</sys:String>
+    <sys:String x:Key="ReagentID">试剂编号</sys:String>
+    <sys:String x:Key="Brand">试剂品牌</sys:String>
+    <sys:String x:Key="BatchNumber">批号</sys:String>
+    <sys:String x:Key="BarCode">条形码</sys:String>
+    <sys:String x:Key="ReagentOrder">试剂顺序</sys:String>
+    <sys:String x:Key="PeirodValidity">有效期</sys:String>
+    <sys:String x:Key="ReagentLeft">剩余量</sys:String>
+    <!--endregion-->
+    
+    <!--region 日志管理-->
+    <sys:String x:Key="LogManage">日志管理</sys:String>
+    <sys:String x:Key="LogType">日志级别:</sys:String>
+    <sys:String x:Key="LogDate">日期时间</sys:String>
+    <sys:String x:Key="LogLevel">级别</sys:String>
+    <sys:String x:Key="LogTitle">事件代码</sys:String>
+    <sys:String x:Key="LogDesc">事件描述</sys:String>
+    <sys:String x:Key="LogClear">清理日志</sys:String>
+    <sys:String x:Key="SelectLevelTip">请选择日志级别。</sys:String>
+    <!--endregion-->
+    
+    <!--region 操作结果提示记录-->
+    <sys:String x:Key="ItemsBaseAdd">基本信息添加</sys:String>
+    <sys:String x:Key="ItemsBaseModify">基本信息修改</sys:String>
+    <sys:String x:Key="ItemsBaseDel">基本信息删除</sys:String>
+    
+    <sys:String x:Key="ResReferAdd">结果对照表添加</sys:String>
+    <sys:String x:Key="ResReferModify">结果对照表修改</sys:String>
+    <sys:String x:Key="ResReferDel">结果对照表删除</sys:String>
+    
+    <sys:String x:Key="QCReferAdd">质控对照表添加</sys:String>
+    <sys:String x:Key="QCReferModify">质控对照表修改</sys:String>
+    <sys:String x:Key="QCReferDel">质控对照表删除</sys:String>
+    
+    <sys:String x:Key="StanBaseAdd">定标数据模板添加</sys:String>
+    <sys:String x:Key="StanDataAdd">定标数据添加</sys:String>
+    <sys:String x:Key="StanBaseModify">定标数据模板修改</sys:String>
+    <sys:String x:Key="StanDataModify">定标数据修改</sys:String>
+    <sys:String x:Key="StanBaseDel">定标数据模板删除</sys:String>
+    <sys:String x:Key="StanDataDel">定标数据删除</sys:String>
+    
+    <sys:String x:Key="VarietyAdd">添加类别</sys:String>
+    <sys:String x:Key="VarietyModify">修改类别设置</sys:String>
+    <sys:String x:Key="VarietyDel">删除类别</sys:String>
+    
+    <sys:String x:Key="ReagentAdd">试剂信息添加</sys:String>
+    <sys:String x:Key="ReagentModify">试剂信息修改</sys:String>
+    <sys:String x:Key="ReagentDel">试剂信息删除</sys:String>
+    <!--endregion-->
+    
+    <!--region 数据管理编辑框提示-->
+    <!--管理员密码-->
+    <sys:String x:Key="AdminPwd">管理员密码</sys:String>
+    <sys:String x:Key="AdminPwdInput">请输入管理员密码</sys:String>
+    <sys:String x:Key="AdminPwdWrong">管理员密码不正确！</sys:String>
+    <sys:String x:Key="ChangePwd">修改管理员密码</sys:String>
+    <sys:String x:Key="ResetAdminPwd">重置管理员密码</sys:String>
+    <sys:String x:Key="OldPwd">原密码</sys:String>
+    <sys:String x:Key="NewPwd">新密码</sys:String>
+    <sys:String x:Key="NewPwdRepeat">新密码确认</sys:String>
+    <sys:String x:Key="NewRepeatWrong">两次输入的新密码不匹配！</sys:String>
+    <sys:String x:Key="PwdNotNullTip">密码不能为空！</sys:String>
+    <sys:String x:Key="EngineerPwd">工程师密码</sys:String>
+    <sys:String x:Key="EngineerPwdInput">请输入工程师密码</sys:String>
+    <sys:String x:Key="EngineerPwdWrong">工程师密码不正确！</sys:String>
+  
+    <!--基本信息提示-->
+    <sys:String x:Key="DetectItemsNotNullTip">检测项不能为空！</sys:String>
+    <sys:String x:Key="DetectItemsNotRepeatTip">检测项不能重复！</sys:String>
+    <sys:String x:Key="NameNotNullTip">全称不能为空！</sys:String>
+    <sys:String x:Key="DetectVarietyIDNotNullTip">项目型不能为空！</sys:String>
+    <sys:String x:Key="BloodAmountNotNullTip">样本用量不能为空！</sys:String>
+    <sys:String x:Key="ReagentAmount1NotNullTip">试剂1用量不能为空！</sys:String>
+    <sys:String x:Key="ReagentAmount2NotNullTip">试剂2用量不能为空！</sys:String>
+    <sys:String x:Key="IncubationTimeNotNullTip">孵育时间不能为空！</sys:String>
+    <sys:String x:Key="IncubationTimeStepNotNullTip">两步法孵育时间1不能为空！</sys:String>
+    <sys:String x:Key="IncubationTimeStep2NotNullTip">两步法孵育时间2不能为空！</sys:String>
+    <sys:String x:Key="StandardAmountNotNullTip">标准品用量不能为空！</sys:String>
+    <sys:String x:Key="FittingApproachIDNotNullTip">拟合方程不能为空！</sys:String>
+    <sys:String x:Key="CoordinateIDNotNullTip">坐标类型不能为空！</sys:String>
+    <sys:String x:Key="StandardStateNotNullTip">标定状态不能为空！</sys:String>
+    <sys:String x:Key="ResultMethodNotNullTip">结果分析方法不能为空！</sys:String>
+    <sys:String x:Key="CorrelationThresholdNotNullTip">相关系数阈值不能为空！</sys:String>
+
+    <!--质控对照表提示-->
+    <sys:String x:Key="ChromeTop1NotNullTip">质控1浓度上限不能为空！</sys:String>
+    <sys:String x:Key="ChromeLow1NotNullTip">质控1浓度下限不能为空！</sys:String>
+    <sys:String x:Key="ChromeTop2NotNullTip">质控2浓度上限不能为空！</sys:String>
+    <sys:String x:Key="ChromeLow2NotNullTip">质控2浓度下限不能为空！</sys:String>
+    <sys:String x:Key="ChromeMean1NotNullTip">质控1浓度均值不能为空！</sys:String>
+    <sys:String x:Key="StandardDeviation1NotNullTip">质控1浓度标准差不能为空！</sys:String>
+    <sys:String x:Key="ChromeMean2NotNullTip">质控2浓度均值不能为空！</sys:String>
+    <sys:String x:Key="StandardDeviation2NotNullTip">质控2浓度标准差不能为空！</sys:String>
+    
+    <!-- 定性结果对照表提示-->
+    <sys:String x:Key="RRsTopLimitNotNullTip">参考范围上限不能为空！</sys:String>
+    <sys:String x:Key="RRsLowLimitNotNullTip">参考范围下线不能为空！</sys:String>
+    <sys:String x:Key="HighLimitNotNullTip">极限范围上限不能为空！</sys:String>
+    <sys:String x:Key="LowLimitNotNullTip">极限范围下限不能为空！</sys:String>
+    <sys:String x:Key="UnitNotNullTip">单位不能为空！</sys:String>
+    <sys:String x:Key="QualitativeANotNullTip">定性参数A不能为空！</sys:String>
+    <sys:String x:Key="QualitativeBNotNullTip">定性参数B不能为空！</sys:String>
+    <sys:String x:Key="QualitativeCNotNullTip">定性参数C不能为空！</sys:String>
+    <sys:String x:Key="QualitativeDNotNullTip">定性参数D不能为空！</sys:String>
+    <sys:String x:Key="QualitativeFormatNotNullTip">定性结果格式不能为空！</sys:String>
+    <sys:String x:Key="NegativeLightNotNullTip">阴性对照发光值不能为空！</sys:String>
+    <sys:String x:Key="PositiveLightNotNullTip">阳性对照发光值不能为空！</sys:String>
+    <!--定标数据-->
+    <sys:String x:Key="StandardCountInGridNotNullTip">标定个数不能为空！</sys:String>
+    <sys:String x:Key="LightChromeRelativityNotNullTip">浓度发光值相关性不能为空！</sys:String>
+    <!--试剂信息提示-->
+    <sys:String x:Key="ReagentIDNotNullTip">试剂编号不能为空！</sys:String>
+    <sys:String x:Key="BrandNotNullTip">试剂品牌不能为空！</sys:String>
+    <sys:String x:Key="BatchNumberNotNullTip">批号不能为空！</sys:String>
+    <sys:String x:Key="BarCodeNotNullTip">条形码不能为空！</sys:String>
+    <sys:String x:Key="ReagentOrderNotNullTip">试剂顺序不能为空！</sys:String>
+    <sys:String x:Key="PeirodValidityNotNullTip">有效期不能为空！</sys:String>
+    <sys:String x:Key="ReagentStateNotNullTip">试剂状态不能为空！</sys:String>
+    <!--类别信息提示-->
+     <sys:String x:Key="VarietyNameNotNullTip">类别名称不能为空！</sys:String>
+    <sys:String x:Key="OrderNumberNotNullTip">显示顺序不能为空！</sys:String>
+
+    <!--导入导出数据-->
+    <sys:String x:Key="ImportExport">导入导出</sys:String>
+    <sys:String x:Key="Import">导入</sys:String>
+    <sys:String x:Key="Export">导出</sys:String>
+    <sys:String x:Key="Browse">浏览</sys:String>
+    <sys:String x:Key="TemplateWrongTip">数据版本不匹配。</sys:String>
+    <sys:String x:Key="ImportPwdWrongTip">密码或数据文件错误。</sys:String>
+    <sys:String x:Key="FilePath">文件路径：</sys:String>
+    <sys:String x:Key="Password">密码：</sys:String>
+    
+    <sys:String x:Key="Reagent1LoadedTip">条码1所对应试剂已加载。</sys:String>
+    <sys:String x:Key="Reagent2LoadedTip">条码2所对应试剂已加载。</sys:String>
+    <sys:String x:Key="Reagent1NotFound">未找到条码1所对应试剂。</sys:String>
+    <sys:String x:Key="Reagent2NotFound">未找到条码2所对应试剂。</sys:String>
+    <sys:String x:Key="ReagentLoadedTip">试剂已加载。</sys:String>
+    <sys:String x:Key="ReagentNotFound">未找到条码对应试剂。</sys:String>
+    <!--endregion-->
+    
+    <!--endregion  -->
+    
+    <!--region 按钮，通用提示-->
+    <sys:String x:Key="CloseTip">关闭</sys:String>
+    <sys:String x:Key="MaxTip">最大化</sys:String>
+    <sys:String x:Key="MinTip">最小化</sys:String>
+    <sys:String x:Key="SettingTip">设置</sys:String>
+    <sys:String x:Key="Help">帮助</sys:String>
+    <sys:String x:Key="About">关于</sys:String>
+    <sys:String x:Key="Save">保存</sys:String>
+    <sys:String x:Key="OK">确定</sys:String>
+    <sys:String x:Key="Cancel">取消</sys:String>
+    <sys:String x:Key="PasswordTitle">请输入密码</sys:String>
+   
+    <sys:String x:Key="Search">查询</sys:String>
+    <sys:String x:Key="SearchFrom">从</sys:String>
+    <sys:String x:Key="SearchTo">至</sys:String>
+    <sys:String x:Key="FirstTip">第一条</sys:String>
+    <sys:String x:Key="PreTip">上一条</sys:String>
+    <sys:String x:Key="NextTip">下一条</sys:String>
+    <sys:String x:Key="LastTip">最后一条</sys:String>
+    <sys:String x:Key="AddTip">添加</sys:String>
+    <sys:String x:Key="DeleteTip">删除</sys:String>
+    <sys:String x:Key="ModifyTip">修改</sys:String>
+    <sys:String x:Key="Refresh">刷新</sys:String>
+    <sys:String x:Key="Edit">编辑记录</sys:String>   
+    
+    <sys:String x:Key="SuccessTip">成功！</sys:String>
+    <sys:String x:Key="FailTip">失败！</sys:String>
+    <sys:String x:Key="NotNullTip">不能为空！</sys:String>
+    <sys:String x:Key="NoDataTipe">请选择一条数据！</sys:String>
+    <sys:String x:Key="IsDelete">确定删除？</sys:String>
+    <sys:String x:Key="IsDoTitle">  确认操作</sys:String><!--确认提示框标题-->
+    <sys:String x:Key="IsDoContent">确定</sys:String>
+    <sys:String x:Key="SelectItemTip">请选择检测项！</sys:String>
+    <sys:String x:Key="StartDateTip">请选择起始日期！</sys:String>
+    <sys:String x:Key="EndDateTip">请选择结束日期！</sys:String>
+    
+     <sys:String x:Key="MessageTip">消息</sys:String>
+    <sys:String x:Key="AlertTip">警告</sys:String>
+    <sys:String x:Key="ErrorTip">错误</sys:String>
+    
+    <sys:String x:Key="NoWindowExc">非WPF窗体线程异常 : </sys:String>
+    <sys:String x:Key="UnHandleException">未处理的异常：</sys:String>
+    <sys:String x:Key="ExitExc">不可恢复的WPF窗体线程异常，应用程序将退出！</sys:String>
+    <!--endregion-->
+    
+    <!--region 消息记录-->
+    <sys:String x:Key="MessageList">消息记录</sys:String>
+    <sys:String x:Key="ClearMessageList">清空记录</sys:String>
+    
+    <!--endregion-->
+    
+ 
+</ResourceDictionary>
