@@ -48,7 +48,7 @@ namespace Rainbow.MeasureUserCtrl
             schart.CreateCoordinate(0, 800, 0, 1);
             mDataList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(mDataList_CollectionChanged);
             dataDia.ItemsSource = mDataList;
-            mFormatDouble = GlobalProvider.FormatDouble;
+            mFormatDouble = GlobalProvider.FormatNumber;
             mGPIOMove = MoveEnum.Move0_5mm;
         }
 

@@ -11,7 +11,7 @@ namespace Rainbow.Utility
     public class GlobalProvider
     {
         #region 全局常量
-        public const string FormatDouble = "f2";
+        public const string FormatNumber = "f2";
         public const double DiagnosticsWave = 350;
         #endregion
 

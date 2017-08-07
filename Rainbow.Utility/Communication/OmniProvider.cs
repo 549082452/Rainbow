@@ -12,6 +12,8 @@ namespace Rainbow.Utility.Communication
 {
     public class OmniProvider
     {
+        
+
         #region 光谱仪参数
         static int numberOfPixels;                         // number of CCD elements/pixels provided by the spectrometer
         static int numberOfSpectrometers;                  // actually attached and talking to us

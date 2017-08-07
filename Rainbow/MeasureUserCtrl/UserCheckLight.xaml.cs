@@ -31,10 +31,10 @@ namespace Rainbow.MeasureUserCtrl
             InitializeComponent();
         }
         ObservableCollection<CheckLightModel> mDataList = new ObservableCollection<CheckLightModel>();
-        ObservableCollection<double> mLightList = new ObservableCollection<double>();
+        ObservableCollection<double> mSetWaveLength_LightList = new ObservableCollection<double>();//设置的波长光强值记录
         double mAverageLight = 0;
-        double mEngineer = 0;
-
+        double mEngineer = 0; 
+        double[] mLightList = null;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -44,7 +44,7 @@ namespace Rainbow.MeasureUserCtrl
                 OmniProvider.GetParameters();
                 schart.CreateCoordinate(0, 800, 0, 10000);
                 datWave_Light.ItemsSource = mDataList;
-                mLightList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(mLightList_CollectionChanged);
+                mSetWaveLength_LightList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(mLightList_CollectionChanged);
 
                 txtBoxcarWidth.Text = OmniProvider.BoxcarWidth.ToString();
                 txtScansToAverage.Text = OmniProvider.ScansToAverage.ToString();
@@ -58,13 +58,13 @@ namespace Rainbow.MeasureUserCtrl
 
         void mLightList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (mLightList.Count > 0)
+            if (mSetWaveLength_LightList.Count > 0)
             {
                 double sum = 0;
-                foreach (double num in mLightList)
+                foreach (double num in mSetWaveLength_LightList)
                 {
                     sum += num;
-                    mAverageLight = sum / mLightList.Count;
+                    mAverageLight = sum / mSetWaveLength_LightList.Count;
                 }
 
             }
@@ -74,16 +74,15 @@ namespace Rainbow.MeasureUserCtrl
         {
             if (txtWaveLength.Text != "")
             {
-
                 OmniProvider.ScansToAverage = txtScansToAverage.IntNumber;
                 OmniProvider.BoxcarWidth = txtBoxcarWidth.IntNumber;
                 OmniProvider.InterationTime = txtIntergrationTime.IntNumber;
 
-                double[] lightList = OmniProvider.GetSpectrum();
-                schart.ShowData(OmniProvider.GetWavelengths(), lightList, 100, 0, 900, 10000, true);
+                mLightList = OmniProvider.GetSpectrum();
+                schart.ShowData(OmniProvider.GetWavelengths(), mLightList, 100, 0, 900, 10000, true);
 
-                txtCurrentLight.Text = OmniProvider.GetMeasureLight(txtWaveLength.DoubleNumber, lightList).ToString("f2");
-                mLightList.Add(txtCurrentLight.DoubleNumber);
+                txtCurrentLight.Text = OmniProvider.GetMeasureLight(txtWaveLength.DoubleNumber, mLightList).ToString("f2");
+                mSetWaveLength_LightList.Add(txtCurrentLight.DoubleNumber);
                 txtAverageLight.Text = mAverageLight.ToString("f2");
 
                 mDataList.Add(new CheckLightModel()
@@ -94,8 +93,8 @@ namespace Rainbow.MeasureUserCtrl
                     ScansToAverage = txtScansToAverage.DoubleNumber,
                     BoxcarWidth = txtBoxcarWidth.DoubleNumber,
                     IntergrationTime = txtIntergrationTime.DoubleNumber,
-                    A230 = OmniProvider.GetMeasureLight(230, lightList),
-                    A280 = OmniProvider.GetMeasureLight(280, lightList)
+                    A230 = OmniProvider.GetMeasureLight(230, mLightList),
+                    A280 = OmniProvider.GetMeasureLight(280, mLightList)
                 });
 
             }
@@ -170,5 +169,14 @@ namespace Rainbow.MeasureUserCtrl
             }
         }
         #endregion
+         
+        private void schart_ChangeSetWaveEvent(Point pointValue)
+        {
+            if(mLightList!=null)
+            {
+                txtCurrentLight.Text = OmniProvider.GetMeasureLight(280, mLightList).ToString(GlobalProvider.FormatNumber);
+                txtAverageLight.Text = mAverageLight.ToString("") ;
+            }
+        }
     }
 }
