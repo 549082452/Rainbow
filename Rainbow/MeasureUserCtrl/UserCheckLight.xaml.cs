@@ -94,7 +94,12 @@ namespace Rainbow.MeasureUserCtrl
                     BoxcarWidth = txtBoxcarWidth.DoubleNumber,
                     IntergrationTime = txtIntergrationTime.DoubleNumber,
                     A230 = OmniProvider.GetMeasureLight(230, mLightList),
-                    A280 = OmniProvider.GetMeasureLight(280, mLightList)
+                    A260 = OmniProvider.GetMeasureLight(260, mLightList),
+                    A280 = OmniProvider.GetMeasureLight(280, mLightList),
+                    A290 = OmniProvider.GetMeasureLight(290, mLightList),
+                    A350 = OmniProvider.GetMeasureLight(350, mLightList),
+                    A500 = OmniProvider.GetMeasureLight(500, mLightList),
+                    A750 = OmniProvider.GetMeasureLight(750, mLightList)
                 });
 
             }

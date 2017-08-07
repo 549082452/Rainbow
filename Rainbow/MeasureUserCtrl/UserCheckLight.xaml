@@ -54,8 +54,13 @@
         </Grid>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" Margin="10,10,10,0" Name="datWave_Light" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding A280}" Header="A280"/>
                 <DataGridTextColumn Binding="{Binding A230}" Header="A230"/>
+                <DataGridTextColumn Binding="{Binding A260}" Header="A260"/>
+                <DataGridTextColumn Binding="{Binding A280}" Header="A280"/>
+                <DataGridTextColumn Binding="{Binding A290}" Header="A290"/>
+                <DataGridTextColumn Binding="{Binding A350}" Header="A350"/>
+                <DataGridTextColumn Binding="{Binding A500}" Header="A500"/>
+                <DataGridTextColumn Binding="{Binding A750}" Header="A750"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1" Grid.Column="1" Visibility="Hidden" Name="gridAdjust" >

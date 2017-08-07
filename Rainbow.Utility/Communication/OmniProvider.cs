@@ -182,17 +182,24 @@ namespace Rainbow.Utility.Communication
         }
         public static double[] GetSpectrum()
         {
-            Wrapper.setIntegrationTime(0, mIntergrationTime);     // Sets the integration time of the first spectrometer to 500ms
-            Wrapper.setStrobeEnable(0, 1);                      // Enables the strobe on the first spectrometer
-            Wrapper.setAutoToggleStrobeLampEnable(0, 1);      // Enables the Auto Strobe lamp on the first spectrometer
-            Wrapper.setScansToAverage(0, mScansToAverage);
-            Wrapper.setBoxcarWidth(0, mBoxcarWidth);
-            Wrapper.getFeatureControllerContinuousStrobe(0)
-                                    .setContinuousStrobeDelay(10000);
-            //Wrapper.setCorrectForElectricalDark(0, 1);
-            //Wrapper.setCorrectForDetectorNonlinearity(0, 1);
+            if (mWrapper != null)
+            {
+                Wrapper.setIntegrationTime(0, mIntergrationTime);     // Sets the integration time of the first spectrometer to 500ms
+                Wrapper.setStrobeEnable(0, 1);                      // Enables the strobe on the first spectrometer
+                Wrapper.setAutoToggleStrobeLampEnable(0, 1);      // Enables the Auto Strobe lamp on the first spectrometer
+                Wrapper.setScansToAverage(0, mScansToAverage);
+                Wrapper.setBoxcarWidth(0, mBoxcarWidth);
+                Wrapper.getFeatureControllerContinuousStrobe(0)
+                                        .setContinuousStrobeDelay(10000);
+                //Wrapper.setCorrectForElectricalDark(0, 1);
+                //Wrapper.setCorrectForDetectorNonlinearity(0, 1);
 
-            return Wrapper.getSpectrum(0);
+                return Wrapper.getSpectrum(0);
+            }
+            else
+            {
+                return null;
+            }
         }
         /// <summary>
         /// 获得波长数据，不保存在对象实例中

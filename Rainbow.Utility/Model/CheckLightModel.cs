@@ -17,5 +17,10 @@ namespace Rainbow.Utility.Model
 
         public double A280 { get; set; }
         public double A230 { get; set; }
+        public double A260 { get; set; }
+        public double A290 { get; set; }
+        public double A350 { get; set; }
+        public double A500 { get; set; }
+        public double A750 { get; set; }
     }
 }
