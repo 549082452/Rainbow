@@ -108,6 +108,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MeasureUserCtrl\AbstractMeasureCtrl.cs" />
+    <Compile Include="MeasureUserCtrl\UserUtilityCtrl.xaml.cs">
+      <DependentUpon>UserUtilityCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UseDyeEdit.xaml.cs">
       <DependentUpon>UseDyeEdit.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MeasureUserCtrl\UserProteinLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MeasureUserCtrl\UserUtilityCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

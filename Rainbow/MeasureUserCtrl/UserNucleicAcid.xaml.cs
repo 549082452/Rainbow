@@ -80,7 +80,7 @@ namespace Rainbow.MeasureUserCtrl
 
             OmniProvider.GetMeasureList(GlobalProvider.CurrentMove);
 
-            schart.ShowData(OmniProvider.GetWavelengths(), OmniProvider.CalcY(GlobalProvider.CurrentMove), 200, 0, 900, 2, true);
+            schart.ShowData(OmniProvider.GetWavelengths(), OmniProvider.CalcY(GlobalProvider.CurrentMove), 220, 0, 360, 2, true);
 
             mSampleTimes++;
             txtTimes.Text = mSampleTimes.ToString();

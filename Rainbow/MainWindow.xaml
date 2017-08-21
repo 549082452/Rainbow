@@ -118,6 +118,7 @@
 
                 <Button Grid.Column="3" Content="Diagnostics" Name="btnDiagnostics" Click="MeasureOperate_Click"></Button>
                 <Button Grid.Column="3" Grid.Row="1" Content="Check Light" Name="btnCheckLight"  Click="MeasureOperate_Click"></Button>
+                <Button Grid.Column="3" Grid.Row="2" Content="Utility" Name="btnUtility" Click="MeasureOperate_Click"></Button>
                 <Button Grid.Column="3" Grid.Row="3" Content="Exit" Name="btnExit" Click="btnExit_Click"></Button>
             </Grid>
         </TabItem>
@@ -130,7 +131,8 @@
                 <Border Name="borderMeasure">
                     
                 </Border>
-                <Button Content="Export" Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Right" Margin="350,0"  Visibility="Hidden" Name="btnExport"  Click="btnExport_Click"></Button>
+                <Button Content="Print" Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Right" Margin="0,0,500,0"  Visibility="Visible" Name="btnPrint"  Click="btnPrint_Click"></Button>
+                <Button Content="Export" Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Right" Margin="350,0"  Visibility="Visible" Name="btnExport"  Click="btnExport_Click"></Button>
                 <Button Content="Blank" Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Right" Margin="200,0" Name="btnBlank" Visibility="Hidden"  Click="btnBlank_Click"></Button>
                 <Button Content="Measure" Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Right" Margin="50,0" Name="btnMeasure" Visibility="Hidden"  Click="btnMeasure_Click"></Button>
                 

@@ -75,17 +75,31 @@ namespace Rainbow
                 case "btnCheckLight":
                     GlobalProvider.MeasureUserCtrl = new UserCheckLight();
                     break;
+                case "btnUtility":
+                    GlobalProvider.MeasureUserCtrl = new UserUtilityCtrl();
+                    break;
             }
             if (btn.Name == "btnDiagnostics" || btn.Name == "btnCheckLight")
             {
+                btnPrint.Visibility = Visibility.Visible;
+                btnExport.Visibility = Visibility.Visible;
                 btnBlank.Visibility = Visibility.Hidden;
                 btnMeasure.Visibility = Visibility.Hidden;
             }
             else
             {
+                btnPrint.Visibility = Visibility.Visible;
+                btnExport.Visibility = Visibility.Visible;
                 btnBlank.Visibility = Visibility.Visible;
                 btnMeasure.Visibility = Visibility.Visible;
-
+                btnMeasure.IsEnabled = false;
+            }
+            if(btn.Name=="btnUtility")
+            {
+                btnPrint.Visibility = Visibility.Hidden;
+                btnExport.Visibility = Visibility.Hidden;
+                btnBlank.Visibility = Visibility.Hidden;
+                btnMeasure.Visibility = Visibility.Hidden;
             }
             borderMeasure.Child = (UIElement)GlobalProvider.MeasureUserCtrl;
             tabMain.SelectedIndex = 1;
@@ -97,6 +111,7 @@ namespace Rainbow
         //空值
         private void btnBlank_Click(object sender, RoutedEventArgs e)
         {
+            btnMeasure.IsEnabled = true;
             GlobalProvider.MeasureUserCtrl.Blank();
         }
         //测量样本
@@ -145,5 +160,12 @@ namespace Rainbow
         {
             Close();
         }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog dialog = new PrintDialog();
+            dialog.PrintVisual(borderMeasure,"mesure");
+        }
+
     }
 }

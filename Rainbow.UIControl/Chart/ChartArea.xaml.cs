@@ -255,6 +255,7 @@ namespace Rainbow.UIControl.Chart
             //    DataArea.Children.Clear();
             //    //ShowData();
             //}
+            
         }
 
         #region 事件
@@ -319,6 +320,5 @@ namespace Rainbow.UIControl.Chart
         }
         #endregion 
 
-      
     }
 }
