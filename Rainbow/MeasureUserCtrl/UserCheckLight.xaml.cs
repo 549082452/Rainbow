@@ -79,7 +79,7 @@ namespace Rainbow.MeasureUserCtrl
                 OmniProvider.InterationTime = txtIntergrationTime.IntNumber;
 
                 mLightList = OmniProvider.GetSpectrum();
-                schart.ShowData(OmniProvider.GetWavelengths(), mLightList, 100, 0, 900, 10000, true);
+                schart.ShowData(OmniProvider.GetWavelengths(), mLightList, 100, 200, 900, 10000, true);
 
                 txtCurrentLight.Text = OmniProvider.GetMeasureLight(txtWaveLength.DoubleNumber, mLightList).ToString("f2");
                 mSetWaveLength_LightList.Add(txtCurrentLight.DoubleNumber);
@@ -177,10 +177,11 @@ namespace Rainbow.MeasureUserCtrl
          
         private void schart_ChangeSetWaveEvent(Point pointValue)
         {
+            txtWaveLength.Text = pointValue.X.ToString();
             if(mLightList!=null)
             {
                 txtCurrentLight.Text = OmniProvider.GetMeasureLight(280, mLightList).ToString(GlobalProvider.FormatNumber);
-                txtAverageLight.Text = mAverageLight.ToString("") ;
+                txtAverageLight.Text = mAverageLight.ToString("f2") ;
             }
         }
     }
