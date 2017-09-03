@@ -108,11 +108,7 @@ namespace Rainbow.MeasureUserCtrl
                 MessageBox.Show("no wavelength");
             }
         }
-        //保存参数
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            OmniProvider.SetParameters(txtScansToAverage.IntNumber, txtBoxcarWidth.IntNumber, txtIntergrationTime.IntNumber);
-        }
+     
         public void Blank()
         {
             throw new NotImplementedException();
@@ -127,54 +123,7 @@ namespace Rainbow.MeasureUserCtrl
 
 
         }
-        #region 调试电机
-        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if (MouseButtonState.Pressed == e.RightButton)
-            {
-                if (mEngineer >= 3)
-                {
-                    Grid.SetColumnSpan(datWave_Light, 1);
-                    gridAdjust.Visibility = Visibility.Visible;
-                    txtMark1.Text = OmniProvider.GetMark(1).ToString();
-                    txtMark2.Text = OmniProvider.GetMark(2).ToString();
-                    txtMark3.Text = OmniProvider.GetMark(3).ToString();
-                }
-                else
-                {
-                    mEngineer++;
-                }
-            }
-            else
-            {
-                Grid.SetColumnSpan(datWave_Light, 2);
-                gridAdjust.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void TextBlock_MouseLeave(object sender, MouseEventArgs e)
-        {
-            mEngineer = 0;
-        }
-
-        private void Mark_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-            switch (btn.Content.ToString())
-            {
-                case "SaveMark1":
-                    OmniProvider.SaveMark(1, txtMark1.IntNumber);
-                    break;
-                case "SaveMark2":
-                    OmniProvider.SaveMark(2, txtMark2.IntNumber);
-                    break;
-                case "SaveMark3":
-                    OmniProvider.SaveMark(3, txtMark3.IntNumber);
-                    break;
-            }
-        }
-        #endregion
-         
+   
         private void schart_ChangeSetWaveEvent(Point pointValue)
         {
             txtWaveLength.Text = pointValue.X.ToString();

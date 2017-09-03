@@ -45,7 +45,7 @@
                 </my:NumTextBox>
             <TextBlock Grid.Row="5" Text="ScansToAverage"></TextBlock>
             <my:NumTextBox Grid.Row="5" Grid.Column="1" Name="txtScansToAverage"></my:NumTextBox>
-            <TextBlock Grid.Row="6" Text="BoxcarWidth" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" MouseLeave="TextBlock_MouseLeave"></TextBlock>
+            <TextBlock Grid.Row="6" Text="BoxcarWidth" ></TextBlock>
             <my:NumTextBox Grid.Row="6" Grid.Column="1" Name="txtBoxcarWidth"></my:NumTextBox>
             <TextBlock Grid.Row="7" Text="IntergrationTime"></TextBlock>
             <my:NumTextBox Grid.Row="7" Grid.Column="1" Name="txtIntergrationTime"></my:NumTextBox>
@@ -63,28 +63,6 @@
                 <DataGridTextColumn Binding="{Binding A750}" Header="A750"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="1" Grid.Column="1" Visibility="Hidden" Name="gridAdjust" >
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="1mm"></TextBlock>
-            <my:NumTextBox Grid.Row="0" Grid.Column="1" Name="txtMark1"></my:NumTextBox>
-            <Button Content="SaveMark1" Grid.Row="0" Grid.Column="2" Click="Mark_Click"></Button>
-
-            <TextBlock Text="0.2mm" Grid.Row="1"></TextBlock>
-            <my:NumTextBox Grid.Row="1" Grid.Column="1" Name="txtMark2"></my:NumTextBox>
-            <Button Content="SaveMark2" Grid.Row="1" Grid.Column="2" Click="Mark_Click"></Button>
-
-            <TextBlock Text="0.05mm" Grid.Row="2" Grid.Column="0"></TextBlock>
-            <my:NumTextBox Grid.Row="2" Grid.Column="1" Name="txtMark3"></my:NumTextBox>
-            <Button Content="SaveMark3" Grid.Row="2 " Grid.Column="2" Click="Mark_Click"></Button>
-        </Grid>
+      
     </Grid>
 </UserControl>

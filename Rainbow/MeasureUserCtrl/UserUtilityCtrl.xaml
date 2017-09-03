@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rainbow.MeasureUserCtrl"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+              xmlns:my="clr-namespace:Rainbow.UIControl.Controls;assembly=Rainbow.UIControl"
+             mc:Ignorable="d"  Loaded="UserControl_Loaded"
+             d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
         
         <Grid.ColumnDefinitions>
@@ -15,7 +16,51 @@
         <Grid.RowDefinitions>
             
         </Grid.RowDefinitions>
-        <GroupBox Header="电机参数"></GroupBox>
-        <GroupBox Header="光路盒参数" Grid.Column="1"></GroupBox>
+        <GroupBox Header="电机参数">
+            <Grid Grid.Row="1" Grid.Column="1"  Name="gridAdjust" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="1mm"></TextBlock>
+                <my:NumTextBox Grid.Row="0" Grid.Column="1" Name="txtMark1"></my:NumTextBox>
+                <Button Content="SaveMark1" Grid.Row="0" Grid.Column="2" Click="Mark_Click"></Button>
+
+                <TextBlock Text="0.2mm" Grid.Row="1"></TextBlock>
+                <my:NumTextBox Grid.Row="1" Grid.Column="1" Name="txtMark2"></my:NumTextBox>
+                <Button Content="SaveMark2" Grid.Row="1" Grid.Column="2" Click="Mark_Click"></Button>
+
+                <TextBlock Text="0.05mm" Grid.Row="2" Grid.Column="0"></TextBlock>
+                <my:NumTextBox Grid.Row="2" Grid.Column="1" Name="txtMark3"></my:NumTextBox>
+                <Button Content="SaveMark3" Grid.Row="2 " Grid.Column="2" Click="Mark_Click"></Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="光路盒参数" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="ScansToAverage"></TextBlock>
+                <my:NumTextBox  Grid.Column="1" Name="txtScansToAverage"></my:NumTextBox>
+                <TextBlock Grid.Row="1" Text="BoxcarWidth" ></TextBlock>
+                <my:NumTextBox Grid.Row="1" Grid.Column="1" Name="txtBoxcarWidth"></my:NumTextBox>
+                <TextBlock Grid.Row="2" Text="IntergrationTime"></TextBlock>
+                <my:NumTextBox Grid.Row="2" Grid.Column="1" Name="txtIntergrationTime"></my:NumTextBox>
+                <Button Name="btnSave" Grid.Row="3" Grid.Column="1" Content="Save" Click="btnSave_Click"></Button>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

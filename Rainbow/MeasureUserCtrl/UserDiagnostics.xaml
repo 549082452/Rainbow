@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:sChart="clr-namespace:Rainbow.UIControl.Chart;assembly=Rainbow.UIControl"
+             xmlns:myChart="clr-namespace:Rainbow.UIControl.Chart;assembly=Rainbow.UIControl"
               xmlns:my="clr-namespace:Rainbow.UIControl.Controls;assembly=Rainbow.UIControl"
              mc:Ignorable="d"  Loaded="UserControl_Loaded"
              d:DesignHeight="700" d:DesignWidth="900">
@@ -16,9 +16,9 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <sChart:ChartArea Name="schart" Margin="0,10,20,10"  >
+        <myChart:ChartArea Name="schart" Margin="0,10,20,10"  >
 
-        </sChart:ChartArea>
+        </myChart:ChartArea>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -45,7 +45,7 @@
             <TextBlock Grid.Row="4" Text="Minimum"></TextBlock>
             <my:NumTextBox Grid.Row="4" Grid.Column="1" Name="txtMinimum">
                 </my:NumTextBox>
-            <TextBlock Grid.Row="5" Text="ErrorMax" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" MouseLeave="TextBlock_MouseLeave"></TextBlock>
+            <TextBlock Grid.Row="5" Text="ErrorMax" ></TextBlock>
             <my:NumTextBox Grid.Row="5" Grid.Column="1" Name="txtErrorMax"></my:NumTextBox>
             <TextBlock Grid.Row="6" Text="STD DEV"></TextBlock>
             <my:NumTextBox Grid.Row="6" Grid.Column="1" Name="txtSTD"></my:NumTextBox>
@@ -56,28 +56,6 @@
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" Margin="10,10,10,0" Name="dataDia">
 
         </DataGrid>
-        <Grid Grid.Row="1" Grid.Column="1" Visibility="Hidden" Name="gridAdjust" >
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="1mm"></TextBlock>
-            <my:NumTextBox Grid.Row="0" Grid.Column="1" Name="txtMark1"></my:NumTextBox>
-            <Button Content="SaveMark1" Grid.Row="0" Grid.Column="2" Click="Mark_Click"></Button>
-            
-            <TextBlock Text="0.2mm" Grid.Row="1"></TextBlock>
-            <my:NumTextBox Grid.Row="1" Grid.Column="1" Name="txtMark2"></my:NumTextBox>
-            <Button Content="SaveMark2" Grid.Row="1" Grid.Column="2" Click="Mark_Click"></Button>
-            
-            <TextBlock Text="0.05mm" Grid.Row="2" Grid.Column="0"></TextBlock>
-            <my:NumTextBox Grid.Row="2" Grid.Column="1" Name="txtMark3"></my:NumTextBox>
-            <Button Content="SaveMark3" Grid.Row="2 " Grid.Column="2" Click="Mark_Click"></Button>
-        </Grid>
+    
     </Grid>
 </UserControl>
