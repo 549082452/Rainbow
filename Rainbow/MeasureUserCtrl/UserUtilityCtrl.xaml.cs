@@ -50,12 +50,15 @@ namespace Rainbow.MeasureUserCtrl
             {
                 case "SaveMark1":
                     OmniProvider.SaveMark(1, txtMark1.IntNumber);
+                    OmniProvider.GoMark(1);
                     break;
                 case "SaveMark2":
                     OmniProvider.SaveMark(2, txtMark2.IntNumber);
+                    OmniProvider.GoMark(2);
                     break;
                 case "SaveMark3":
                     OmniProvider.SaveMark(3, txtMark3.IntNumber);
+                    OmniProvider.GoMark(3);
                     break;
             }
         }
