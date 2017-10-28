@@ -148,7 +148,7 @@ namespace Rainbow.UIControl.Chart
             ObservableCollection<Point> pointList = new ObservableCollection<Point>();
             if (yValue != null)
             {
-                for (int i = 29; i < yValue.Length; i++)//从200波长开始
+                for (int i = 0; i < yValue.Length; i++)//从200波长开始
                 {
                     Point point = new Point(i, yValue[i]);
                     pointList.Add(point);
@@ -162,7 +162,7 @@ namespace Rainbow.UIControl.Chart
             ObservableCollection<Point> pointList = new ObservableCollection<Point>();
             if (yValue != null)
             {
-                for (int i = 29; i < yValue.Length; i++)
+                for (int i = 0; i < xValue.Length; i++)
                 {
                     Point point = new Point(xValue[i], yValue[i]);
                     pointList.Add(point);

@@ -41,6 +41,7 @@ namespace Rainbow.Utility.Communication
         #endregion
 
         #region 属性
+        private static bool isSimulate = false;
         public static int ScansToAverage
         {
             get
@@ -180,26 +181,41 @@ namespace Rainbow.Utility.Communication
         {
             Wrapper.closeAllSpectrometers();
         }
+        /// <summary>
+        /// 获得光强值
+        /// </summary>
+        /// <returns></returns>
         public static double[] GetSpectrum()
         {
-            if (mWrapper != null)
+            double[] light = null;
+            if (isSimulate)
             {
-                Wrapper.setIntegrationTime(0, mIntergrationTime);     // Sets the integration time of the first spectrometer to 500ms
-                Wrapper.setStrobeEnable(0, 1);                      // Enables the strobe on the first spectrometer
-                Wrapper.setAutoToggleStrobeLampEnable(0, 1);      // Enables the Auto Strobe lamp on the first spectrometer
-                Wrapper.setScansToAverage(0, mScansToAverage);
-                Wrapper.setBoxcarWidth(0, mBoxcarWidth);
-                Wrapper.getFeatureControllerContinuousStrobe(0)
-                                        .setContinuousStrobeDelay(10000);
-                //Wrapper.setCorrectForElectricalDark(0, 1);
-                //Wrapper.setCorrectForDetectorNonlinearity(0, 1);
-
-                return Wrapper.getSpectrum(0);
+                light = new double[2048];
+                Random random = new Random();
+                light = new double[2048];
+                for (int i = 0; i < 2048; i++)
+                {
+                    light[i] = random.Next(1, 1000);
+                }
             }
             else
             {
-                return null;
+                if (mWrapper != null)
+                {
+                    Wrapper.setIntegrationTime(0, mIntergrationTime);     // Sets the integration time of the first spectrometer to 500ms
+                    Wrapper.setStrobeEnable(0, 1);                      // Enables the strobe on the first spectrometer
+                    Wrapper.setAutoToggleStrobeLampEnable(0, 1);      // Enables the Auto Strobe lamp on the first spectrometer
+                    Wrapper.setScansToAverage(0, mScansToAverage);
+                    Wrapper.setBoxcarWidth(0, mBoxcarWidth);
+                    Wrapper.getFeatureControllerContinuousStrobe(0)
+                                            .setContinuousStrobeDelay(10000);
+                    //Wrapper.setCorrectForElectricalDark(0, 1);
+                    //Wrapper.setCorrectForDetectorNonlinearity(0, 1);
+
+                    light= Wrapper.getSpectrum(0);
+                }
             }
+            return light;
         }
         /// <summary>
         /// 获得波长数据，不保存在对象实例中
@@ -207,10 +223,57 @@ namespace Rainbow.Utility.Communication
         /// <returns></returns>
         public static double[] GetWavelengths()
         {
-            return Wrapper.getWavelengths(0);
+            double[] wavelengths = null;
+            if (isSimulate)
+            {
+                Random random = new Random();
+                wavelengths = new double[2048];
+                for (int i = 0; i < 2048; i++)
+                {
+                    wavelengths[i] = i;
+                }
+            }
+            else
+            {
+                wavelengths= Wrapper.getWavelengths(0);
+            }
+            return wavelengths;
         }
         /// <summary>
-        /// 获取波长数据并保存在实例
+        /// 
+        /// </summary>
+        /// <param name="startWavelength">开始波长</param>
+        /// <param name="endWavelength">结束波长</param>
+        /// <returns></returns>
+        public static double[] GetWavelengths(int startWavelength ,int endWavelength)
+        {
+            double[] wavelengths = null;
+           
+            if (isSimulate)
+            {
+                Random random = new Random();
+                wavelengths = new double[endWavelength - startWavelength];
+                for (int i = 0; i < wavelengths.Length; i++)
+                {
+                    
+                    wavelengths[i] = i+startWavelength;
+                }
+            }
+            else
+            {
+                int startIndex= GetBestWaveLength(startWavelength);
+                int endIndex = GetBestWaveLength(endWavelength);
+                wavelengths = new double[endIndex-startIndex];
+                
+                for (int i = 0; i < endIndex-startIndex; i++)
+                {
+                    wavelengths[i] = mWaveList[i+startIndex];   
+                }
+            }
+            return wavelengths;
+        }
+        /// <summary>
+        /// 获取波长数据并保存在实例,启动软件时调用
         /// </summary>
         /// <returns></returns>
         public static double[] GetWaveLengthsList()
@@ -221,7 +284,7 @@ namespace Rainbow.Utility.Communication
         /// <summary>
         /// 获得仪器中与指定波长最接近的波长值
         /// </summary>
-        /// <returns>仪器波长值</returns>
+        /// <returns>波长值索引</returns>
         public static int GetBestWaveLength(double wave)
         {
             double dev = 1;
@@ -268,6 +331,7 @@ namespace Rainbow.Utility.Communication
         #region 基本命令
         public static void Reset()
         {
+            if(!isSimulate)
             SendCommand(mReset);
             
         }
@@ -592,7 +656,10 @@ namespace Rainbow.Utility.Communication
         /// <returns></returns>
         public static double[] GetBlankList(MoveEnum markOrder)
         {
-            MotorMove(markOrder);
+            if (!isSimulate)
+            {
+                MotorMove(markOrder);
+            }
             double[] list = GetSpectrum();
             switch(markOrder)
             {
@@ -616,7 +683,10 @@ namespace Rainbow.Utility.Communication
         /// <returns></returns>
         public static double[] GetMeasureList(MoveEnum markOrder)
         {
-            MotorMove(markOrder);
+            if (!isSimulate)
+            {
+                MotorMove(markOrder);
+            }
             double[] list = GetSpectrum();
             switch (markOrder)
             {
