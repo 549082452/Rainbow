@@ -146,8 +146,8 @@ namespace Rainbow.UIControl.Chart
         }
         public void CreateCoordinate(int xMin, int xMax, int yMin, int yMax)
         {
-            AxisX.CreateAxis(xMax,10);
-            AxisY.CreateAxis(yMax,10);
+            AxisX.CreateAxis(xMax,xMin,10);
+            AxisY.CreateAxis(yMax,yMin,10);
         }
         /// <summary>
         /// 显示数据
@@ -228,13 +228,13 @@ namespace Rainbow.UIControl.Chart
         public void SetWave(double waveLength)
         {
 
-            if (SeriesCollection.Count > 0)
-            {
-                Point point= SeriesCollection[0].DataToPrintPoint(new Point(waveLength, 0), 0, 0);
+            //if (SeriesCollection.Count > 0)
+            //{
+                Point point= DataToPrintPoint(new Point(waveLength, 0), 0, 0);
                 if (lineY == null)
                 {
                     lineY = new Line();
-                DataArea.Children.Add(lineY);
+                    DataArea.Children.Add(lineY);
                 }
                 lineY.X1 = point.X;
                 lineY.X2 = point.X;
@@ -242,7 +242,7 @@ namespace Rainbow.UIControl.Chart
                 lineY.Y2 = DataArea.ActualHeight;
                 lineY.Stroke = Brushes.Black;
                 lineY.StrokeThickness = 1;
-            }
+            //}
         }
         #endregion
     
@@ -311,14 +311,66 @@ namespace Rainbow.UIControl.Chart
             lineY.StrokeThickness = 1;
             if (ChangeSetWaveEvent != null)
             {
-                if (SeriesCollection.Count > 0)
-                {
-                    Point pointValue = SeriesCollection[0].PrintPointToData(point, 0, 0);
+                //if (SeriesCollection.Count > 0)
+                //{
+                    Point pointValue = PrintPointToData(point, 0, 0);
                     ChangeSetWaveEvent.Invoke(pointValue);
-                }
+                //}
             }
         }
-        #endregion 
+        #endregion
 
+
+        double mXValueScale;
+        double mYValueScale;
+        /// <summary>
+        /// 计算点的绘图坐标
+        /// </summary>
+        /// <param name="point">点数据</param>
+        /// <param name="correctX">X位移</param>
+        /// <param name="correctY">Y位移</param>
+        /// <returns>位置</returns>
+        public Point DataToPrintPoint(Point point, double correctX, double correctY)
+        {
+            Point pointPosition = new Point();
+            //设置坐标系的比例参数
+            mXValueScale = AxisX.ValueScale;
+            mYValueScale = AxisY.ValueScale;
+
+            switch (CoordinateType)//不同坐标系中显示方法
+            {
+                case CoordinateInfoEnum.XY:
+                    pointPosition.X = (point.X - AxisX.MinValue) * mXValueScale - correctX;
+                    pointPosition.Y = DataArea.ActualHeight - (point.Y - AxisY.MinValue) * mYValueScale - correctY;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            return pointPosition;
+        }
+        /// <summary>
+        /// 计算坐标点的值
+        /// </summary>
+        /// <param name="point">点数据</param>
+        /// <param name="correctX">X位移</param>
+        /// <param name="correctY">Y位移</param>
+        /// <returns>位置</returns>
+        public Point PrintPointToData(Point pointPosition, double correctX, double correctY)
+        {
+            Point point = new Point();
+            //设置坐标系的比例参数
+            mXValueScale = AxisX.ValueScale;
+            mYValueScale = AxisY.ValueScale;
+            switch (CoordinateType)//不同坐标系中显示方法
+            {
+                case CoordinateInfoEnum.XY:
+                    point.X = (pointPosition.X + correctX) / mXValueScale + AxisX.MinValue;
+                    point.Y = (DataArea.ActualHeight - pointPosition.Y - correctY) / mYValueScale + AxisY.MinValue;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            return point;
+        }
     }
 }

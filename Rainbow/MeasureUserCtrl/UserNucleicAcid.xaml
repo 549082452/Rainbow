@@ -56,7 +56,7 @@
             <ComboBox Grid.Row="1"  Width="80" Name="cboType"  Grid.ColumnSpan="2" 
                       DisplayMemberPath="TypeName" SelectedValuePath="TypeValue" SelectionChanged="cboType_SelectionChanged"></ComboBox>
             <TextBlock Grid.Row="2" Text="SW nm"></TextBlock>
-            <my:NumTextBox Grid.Row="2" Grid.Column="1" Name="txtSW" Text="260" TextChanged="txtSW_TextChanged"></my:NumTextBox>
+            <my:NumTextBox Grid.Row="2" Grid.Column="1" Name="txtSW" Text="280" TextChanged="txtSW_TextChanged"></my:NumTextBox>
             <TextBlock Grid.Row="3" Text="SW Abs(10nm)"></TextBlock>
             <my:NumTextBox Grid.Row="3" Grid.Column="1" Name="txtSwAbs" ></my:NumTextBox>
             <TextBlock Grid.Row="4" Text="260nm Abs(10nm)"></TextBlock>

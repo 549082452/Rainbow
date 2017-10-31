@@ -36,7 +36,8 @@ namespace Rainbow.MeasureUserCtrl
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            schart.CreateCoordinate(220, 350, 0, 10);
+            schart.CreateCoordinate(220, 360, 0, 10);
+            schart.SetWave(double.Parse(txtSW.Text));
             List<NucleicAcidTypeModel> typeList = new List<NucleicAcidTypeModel>();
             typeList.Add(new NucleicAcidTypeModel() { TypeName = "DsDNA", TypeValue = 33 });
             typeList.Add(new NucleicAcidTypeModel() { TypeName = "RNA", TypeValue = 40 });
@@ -52,8 +53,11 @@ namespace Rainbow.MeasureUserCtrl
             if (txtSW.Text != "" && txtSwAbs != null)
             {
                 double bestWaveSet = OmniProvider.GetBestWaveLength(double.Parse(txtSW.Text));
-                txtSwAbs.Text = OmniProvider.GetAbs(bestWaveSet, GlobalProvider.CurrentMove).ToString("f2");
-                schart.SetWave(double.Parse(txtSW.Text));
+                if (bestWaveSet > 0)
+                {
+                    txtSwAbs.Text = OmniProvider.GetAbs(bestWaveSet, GlobalProvider.CurrentMove).ToString("f2");
+                    schart.SetWave(double.Parse(txtSW.Text));
+                }
             }
         }
         private void schart_ChangeSetWaveEvent(Point pointValue)

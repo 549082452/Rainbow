@@ -290,23 +290,27 @@ namespace Rainbow.Utility.Communication
             double dev = 1;
             double bestKey = 0;
             int waveIndex;
-            int bestWaveIndex=0;
-            for (waveIndex = 0; waveIndex < mWaveList.Length; waveIndex++)
-            {
-                double _key = mWaveList[waveIndex];
-                double sub = _key - wave;
-                if (Math.Abs(sub) > dev)
-                {
+            int bestWaveIndex=-1;
+            if (mWaveList!=null&& mWaveList.Length > 0)
 
-                }
-                else if (Math.Abs(sub) < dev)
+            {
+                for (waveIndex = 0; waveIndex < mWaveList.Length; waveIndex++)
                 {
-                    dev = Math.Abs(sub);
-                    bestKey = _key;
-                    bestWaveIndex = waveIndex;
+                    double _key = mWaveList[waveIndex];
+                    double sub = _key - wave;
+                    if (Math.Abs(sub) > dev)
+                    {
+
+                    }
+                    else if (Math.Abs(sub) < dev)
+                    {
+                        dev = Math.Abs(sub);
+                        bestKey = _key;
+                        bestWaveIndex = waveIndex;
+                    }
                 }
+                bestKey = double.Parse(bestKey.ToString("0.00"));
             }
-            bestKey = double.Parse(bestKey.ToString("0.00"));
             return bestWaveIndex;
         }
         #endregion
