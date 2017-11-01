@@ -54,7 +54,7 @@ namespace Rainbow.MeasureUserCtrl
             MeasureDataModel model = null;
             OmniProvider.GetMeasureList(GlobalProvider.CurrentMove);
 
-            schart.ShowData(OmniProvider.GetWavelengths(), OmniProvider.CalcY(GlobalProvider.CurrentMove), 200, 0, 900, 2, true);
+            schart.ShowData(OmniProvider.GetWavelengths(200,800), OmniProvider.CalcY(GlobalProvider.CurrentMove), 200, 0, 800, 2, true);
 
             mSampleTimes++;
             txtTimes.Text = mSampleTimes.ToString();
