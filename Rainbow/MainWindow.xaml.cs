@@ -131,18 +131,21 @@ namespace Rainbow
             DyeListBLL.ReadInitDye();
             try
             {
-                if (OmniProvider.OpenSpectrometers() > 0)
+                if (!OmniProvider.isSimulate)
                 {
-                    OmniProvider.OpenSerialPort();
-                    OmniProvider.SendCommand("ZZ",false);
-                    OmniProvider.GetWaveLengthsList();//获得波长
-                    OmniProvider.GetParameters();
-                }
-                else
-                {
-                    MessageBox.Show("Connect fail.未找到光谱仪");
-                    Functions.CommnucationLog("Connect fail.未找到光谱仪");
-                }
+                    if (OmniProvider.OpenSpectrometers() > 0)
+                    {
+                        OmniProvider.OpenSerialPort();
+                        OmniProvider.SendCommand("ZZ", false);
+                        OmniProvider.GetWaveLengthsList();//获得波长
+                        OmniProvider.GetParameters();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Connect fail.未找到光谱仪");
+                        Functions.CommnucationLog("Connect fail.未找到光谱仪");
+                    }
+                } 
             }
             catch(Exception ex)
             {

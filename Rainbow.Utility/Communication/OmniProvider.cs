@@ -41,7 +41,7 @@ namespace Rainbow.Utility.Communication
         #endregion
 
         #region 属性
-        private static bool isSimulate = false;
+        public static bool isSimulate = true;
         public static int ScansToAverage
         {
             get
@@ -175,6 +175,8 @@ namespace Rainbow.Utility.Communication
         #region 光谱仪方法
         public static int OpenSpectrometers()
         {
+            if (isSimulate)
+                return 1;
             return Wrapper.openAllSpectrometers();
         }
         public static void CloseAllSpectrometers()
@@ -202,17 +204,24 @@ namespace Rainbow.Utility.Communication
             {
                 if (mWrapper != null)
                 {
-                    Wrapper.setIntegrationTime(0, mIntergrationTime);     // Sets the integration time of the first spectrometer to 500ms
-                    Wrapper.setStrobeEnable(0, 1);                      // Enables the strobe on the first spectrometer
-                    Wrapper.setAutoToggleStrobeLampEnable(0, 1);      // Enables the Auto Strobe lamp on the first spectrometer
-                    Wrapper.setScansToAverage(0, mScansToAverage);
-                    Wrapper.setBoxcarWidth(0, mBoxcarWidth);
-                    Wrapper.getFeatureControllerContinuousStrobe(0)
-                                            .setContinuousStrobeDelay(10000);
-                    //Wrapper.setCorrectForElectricalDark(0, 1);
-                    //Wrapper.setCorrectForDetectorNonlinearity(0, 1);
+                    try
+                    {
+                        Wrapper.setIntegrationTime(0, mIntergrationTime);     // Sets the integration time of the first spectrometer to 500ms
+                        Wrapper.setStrobeEnable(0, 1);                      // Enables the strobe on the first spectrometer
+                        Wrapper.setAutoToggleStrobeLampEnable(0, 1);      // Enables the Auto Strobe lamp on the first spectrometer
+                        Wrapper.setScansToAverage(0, mScansToAverage);
+                        Wrapper.setBoxcarWidth(0, mBoxcarWidth);
+                        Wrapper.getFeatureControllerContinuousStrobe(0)
+                                                .setContinuousStrobeDelay(10000);
+                        //Wrapper.setCorrectForElectricalDark(0, 1);
+                        //Wrapper.setCorrectForDetectorNonlinearity(0, 1);
 
-                    light= Wrapper.getSpectrum(0);
+                        light = Wrapper.getSpectrum(0);
+                    }
+                    catch(Exception ex)
+                    {
+                        Functions.Functions.LOG(ex.Message);
+                    }
                 }
             }
             return light;

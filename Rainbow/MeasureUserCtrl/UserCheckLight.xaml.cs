@@ -42,7 +42,7 @@ namespace Rainbow.MeasureUserCtrl
             {
 
                 OmniProvider.GetParameters();
-                schart.CreateCoordinate(100, 900, 0, 10000);
+                schart.CreateCoordinate(100, 900, 0,70000);
                 datWave_Light.ItemsSource = mDataList;
                 mSetWaveLength_LightList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(mLightList_CollectionChanged);
 
