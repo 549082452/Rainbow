@@ -29,7 +29,7 @@ namespace Rainbow.MeasureUserCtrl
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            datDye.ItemsSource = GlobalProvider.DyeList;
+            //datDye.ItemsSource = GlobalProvider.DyeList;
 
         }
 

@@ -107,7 +107,7 @@ namespace Rainbow
 
         #endregion
 
-        #region 测试
+        #region 测试和导出事件
         //空值
         private void btnBlank_Click(object sender, RoutedEventArgs e)
         {
@@ -122,8 +122,16 @@ namespace Rainbow
         }
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
+            btnExport.IsEnabled = false;
             GlobalProvider.MeasureUserCtrl.ExportTxt();
+            btnExport.IsEnabled = true;
         }
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog dialog = new PrintDialog();
+            dialog.PrintVisual(borderMeasure, "mesure");
+        }
+
         #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -164,11 +172,6 @@ namespace Rainbow
             Close();
         }
 
-        private void btnPrint_Click(object sender, RoutedEventArgs e)
-        {
-            PrintDialog dialog = new PrintDialog();
-            dialog.PrintVisual(borderMeasure,"mesure");
-        }
 
     }
 }

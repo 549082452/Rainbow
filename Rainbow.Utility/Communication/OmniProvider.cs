@@ -24,7 +24,7 @@ namespace Rainbow.Utility.Communication
         #endregion
         
         #region 光谱仪测量数据
-        static OmniDriver.CCoSPIBus mSpibus = null;
+
         static private CCoWrapper mWrapper = null;
 
         static private double[] mBlankList_1;
@@ -41,7 +41,7 @@ namespace Rainbow.Utility.Communication
         #endregion
 
         #region 属性
-        public static bool isSimulate = true;
+        public static bool isSimulate = false;
         public static int ScansToAverage
         {
             get
@@ -106,33 +106,7 @@ namespace Rainbow.Utility.Communication
             }
         }
 
-        static OmniDriver.CCoSPIBus SPIBus
-        {
-            get
-            {
-                if (mSpibus== null)
-                {
-                    if (Wrapper != null)
-                    {
-                        CCoGPIO tt= Wrapper.getFeatureControllerGPIO(0);
 
-
-                        CCoBitSet set = new CCoBitSet();
-                        
-                        if (Wrapper.isFeatureSupportedSPIBus(0) == 1)
-                        {
-                            mSpibus = Wrapper.getFeatureControllerSPIBus(0);
-                            
-                        }
-                        else
-                        {
-                            Functions.Functions.LOG("SPIBus feature is not supported");
-                        }
-                    }
-                }
-                return mSpibus;
-            }
-        }
         static CCoGPIO mGPIO = null;
         static OmniDriver.CCoGPIO GPIO
         {
