@@ -227,7 +227,7 @@ namespace Rainbow.UIControl.Chart
 
         public void SetWave(double waveLength)
         {
-
+            
             //if (SeriesCollection.Count > 0)
             //{
                 Point point= DataToPrintPoint(new Point(waveLength, 0), 0, 0);
@@ -236,6 +236,7 @@ namespace Rainbow.UIControl.Chart
                     lineY = new Line();
                     DataArea.Children.Add(lineY);
                 }
+             
                 lineY.X1 = point.X;
                 lineY.X2 = point.X;
                 lineY.Y1 = 0;
@@ -243,6 +244,14 @@ namespace Rainbow.UIControl.Chart
                 lineY.Stroke = Brushes.Black;
                 lineY.StrokeThickness = 1;
             //}
+        }
+        public void HideWaveLine()
+        {
+            if(lineY!=null)
+            {
+                DataArea.Children.Remove(lineY);
+                lineY = null;
+            }
         }
         #endregion
     

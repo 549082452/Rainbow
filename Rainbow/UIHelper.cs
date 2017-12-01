@@ -13,6 +13,7 @@ namespace Rainbow
 {
     public class UIHelper
     {
+
         #region 导出DataGrid数据到CSV或者文本
 
         public static void ExportDataGrid(DataGrid dGrid)
@@ -61,7 +62,14 @@ namespace Rainbow
                                 if (objBinding.Path.Path != "")
                                 {
                                     PropertyInfo pi = data.GetType().GetProperty(objBinding.Path.Path);
-                                    if (pi != null) strValue = pi.GetValue(data, null).ToString();
+                                    if (pi != null)
+                                    {
+                                        object _value = pi.GetValue(data, null);
+                                        if (_value != null)
+                                        {
+                                            strValue = _value.ToString();
+                                        }
+                                    }
                                 }
                                 if (objBinding.Converter != null)
                                 {
@@ -100,6 +108,7 @@ namespace Rainbow
                         sw.WriteLine("</Workbook>");
                     }
                     sw.Close();
+                   
                     MessageBox.Show("Export completed.");
                 }
             }
@@ -134,5 +143,140 @@ namespace Rainbow
             return data;
         }
         #endregion 导出DataGrid数据到Excel
+
+        #region 导出List<T>到CSV或者文本
+        ///// <summary>
+        ///// Create target file
+        ///// </summary>
+        ///// <param name="folder">folder</param>
+        ///// <param name="fileName">folder name</param>
+        ///// <param name="fileExtension">file extension</param>
+        ///// <returns>file path</returns>
+        //private string CreateFile(string folder, string fileName, string fileExtension)
+        //{
+        //    FileStream fs = null;
+        //    string filePath = folder + fileName + "." + fileExtension;
+        //    try
+        //    {
+        //        if (!Directory.Exists(folder))
+        //        {
+        //            Directory.CreateDirectory(folder);
+        //        }
+        //        fs = File.Create(filePath);
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //    finally
+        //    {
+        //        if (fs != null)
+        //        {
+        //            fs.Dispose();
+        //        }
+        //    }
+        //    return filePath;
+        //}
+        //private PropertyInfo[] GetPropertyInfoArray<T>(T t)
+        //{
+        //    PropertyInfo[] props = null;
+        //    try
+        //    {
+        //        Type type = typeof(T);
+        //        object obj = Activator.CreateInstance(type);
+        //        props = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //    return props;
+        //}
+        ///// <summary>
+        ///// Save the List data to CSV file
+        ///// </summary>
+        ///// <param name="studentList">data source</param>
+        ///// <param name="filePath">file path</param>
+        ///// <returns>success flag</returns>
+        //private bool SaveDataToCSVFile<T>(List<T> studentList, string filePath)
+        //{
+        //    bool successFlag = true;
+
+        //    StringBuilder strColumn = new StringBuilder();
+        //    StringBuilder strValue = new StringBuilder();
+        //    StreamWriter sw = null;
+        //    PropertyInfo[] props = GetPropertyInfoArray(studentList[0]);
+
+        //    try
+        //    {
+        //        sw = new StreamWriter(filePath);
+        //        for (int i = 0; i < props.Length; i++)
+        //        {
+        //            strColumn.Append(props[i].Name);
+        //            strColumn.Append(",");
+        //        }
+        //        strColumn.Remove(strColumn.Length - 1, 1);
+        //        sw.WriteLine(strColumn);    //write the column name
+
+        //        for (int i = 0; i < studentList.Count; i++)
+        //        {
+        //            strValue.Remove(0, strValue.Length); //clear the temp row value
+        //            strValue.Append(studentList[i].Id);
+        //            strValue.Append(",");
+        //            strValue.Append(studentList[i].Name);
+        //            strValue.Append(",");
+        //            strValue.Append(studentList[i].Age);
+        //            sw.WriteLine(strValue); //write the row value
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        successFlag = false;
+        //    }
+        //    finally
+        //    {
+        //        if (sw != null)
+        //        {
+        //            sw.Dispose();
+        //        }
+        //    }
+
+        //    return successFlag;
+        //}
+
+        /// <summary>
+        /// 将List<T>导出到CSV
+        /// </summary>
+        /// <typeparam name="T">类型T</typeparam>
+        /// <param name="lst">T的集合</param>
+        /// <param name="filePath">保存路径</param>
+        /// <returns></returns>
+        private bool SaveListtoCsv<T>(List<T> lst, string filePath)
+        {
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                // 生成列
+                var type = typeof(T);
+                PropertyInfo[] props = type.GetProperties();
+                StringBuilder strColumn = new StringBuilder();
+                foreach (PropertyInfo item in props)
+                {
+                    strColumn.Append(item.Name);
+                    strColumn.Append(",");
+                }
+                sw.WriteLine(strColumn);
+
+                // 写入数据
+                StringBuilder strValue = new StringBuilder();
+                foreach (var dr in lst)
+                {
+                    strValue.Clear();
+                    foreach (PropertyInfo item in props)
+                    {
+                        strValue.Append(item.GetValue(dr, null));
+                        strValue.Append(",");
+                    }
+                    sw.WriteLine(strValue);
+                }
+                return true;
+            }
+        }
+        #endregion
     }
 }

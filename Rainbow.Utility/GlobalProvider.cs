@@ -12,6 +12,9 @@ namespace Rainbow.Utility
     {
         #region 全局常量
         public const string FormatNumber = "f2";
+        public const string WavelengthFormat = "f0";
+        public const string AbsFormat = "f4";
+        public const string ConcFormat = "f2";
         public const double DiagnosticsWave = 350;
         #endregion
 
