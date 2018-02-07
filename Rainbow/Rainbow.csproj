@@ -111,6 +111,7 @@
     <Compile Include="MeasureUserCtrl\UserUtilityCtrl.xaml.cs">
       <DependentUpon>UserUtilityCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UIHelper.cs" />
     <Compile Include="UseDyeEdit.xaml.cs">
       <DependentUpon>UseDyeEdit.xaml</DependentUpon>
     </Compile>

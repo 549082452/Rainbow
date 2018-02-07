@@ -27,7 +27,7 @@
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         
-        <sChart:ChartArea Name="schart" Margin="0,10,20,10"  ChangeSetWaveEvent="schart_ChangeSetWaveEvent">
+        <sChart:ChartArea Name="schart" Margin="0,10,20,10"  ChangeSetWaveEvent="schart_ChangeSetWaveEvent" LostFocus="schart_LostFocus" MouseLeave="schart_MouseLeave">
 
         </sChart:ChartArea>
         <Grid Grid.Column="1">

@@ -39,12 +39,13 @@ namespace Rainbow.MeasureUserCtrl
             schart.CreateCoordinate(220, 360, 0, 10);
             schart.SetWave(double.Parse(txtSW.Text));
             List<NucleicAcidTypeModel> typeList = new List<NucleicAcidTypeModel>();
-            typeList.Add(new NucleicAcidTypeModel() { TypeName = "DsDNA", TypeValue = 33 });
+            typeList.Add(new NucleicAcidTypeModel() { TypeName = "DsDNA", TypeValue = 50 });
             typeList.Add(new NucleicAcidTypeModel() { TypeName = "RNA", TypeValue = 40 });
-            typeList.Add(new NucleicAcidTypeModel() { TypeName = "ssDNA", TypeValue = 50 });
+            typeList.Add(new NucleicAcidTypeModel() { TypeName = "ssDNA", TypeValue = 33 });
             typeList.Add(new NucleicAcidTypeModel() { TypeName = "Custom", TypeValue = 1 });
             cboType.ItemsSource = typeList;
             dataGrid.ItemsSource = DataList;
+            cboType.SelectedIndex = 0;
         }
 
 
@@ -55,14 +56,14 @@ namespace Rainbow.MeasureUserCtrl
                 double bestWaveSet = OmniProvider.GetBestWaveLength(double.Parse(txtSW.Text));
                 if (bestWaveSet > 0)
                 {
-                    txtSwAbs.Text = OmniProvider.GetAbs(bestWaveSet, GlobalProvider.CurrentMove).ToString("f2");
+                    txtSwAbs.Text = OmniProvider.GetAbs(bestWaveSet, GlobalProvider.CurrentMove).ToString(GlobalProvider.AbsFormat);
                     schart.SetWave(double.Parse(txtSW.Text));
                 }
             }
         }
         private void schart_ChangeSetWaveEvent(Point pointValue)
         {
-            txtSW.Text = pointValue.X.ToString("f2");
+            txtSW.Text = pointValue.X.ToString(GlobalProvider.WavelengthFormat);
         }
 
 
@@ -103,15 +104,15 @@ namespace Rainbow.MeasureUserCtrl
                 k = 5;
                 OmniProvider.GetMeasureList(GlobalProvider.CurrentMove);
                 abs260 = OmniProvider.GetAbs(260, GlobalProvider.CurrentMove);
-                txtConc.Text = (Math.Log10(abs260) * k * b ).ToString();
+                txtConc.Text = (Math.Log10(abs260) * k * b ).ToString(GlobalProvider.ConcFormat);
             }
-           txtSwAbs.Text = OmniProvider.GetAbs(260, GlobalProvider.CurrentMove).ToString("f2");
+           txtSwAbs.Text = OmniProvider.GetAbs(260, GlobalProvider.CurrentMove).ToString(GlobalProvider.AbsFormat);
            abs260 = OmniProvider.GetAbs(260, GlobalProvider.CurrentMove);
            abs280 = OmniProvider.GetAbs(280, GlobalProvider.CurrentMove);
-            txt260Abs.Text = abs260.ToString("f2");
-            txt280Abs.Text = abs280.ToString("f2");
-            txt260_280.Text = (abs260 / abs280).ToString("f2");
-            txt260_230.Text = (abs260 / OmniProvider.GetAbs(230, GlobalProvider.CurrentMove)).ToString("f2");
+            txt260Abs.Text = abs260.ToString(GlobalProvider.AbsFormat);
+            txt280Abs.Text = abs280.ToString(GlobalProvider.AbsFormat);
+            txt260_280.Text = (abs260 / abs280).ToString(GlobalProvider.AbsFormat);
+            txt260_230.Text = (abs260 / OmniProvider.GetAbs(230, GlobalProvider.CurrentMove)).ToString(GlobalProvider.AbsFormat);
           
             MeasureDataModel model = new MeasureDataModel()
             {
@@ -124,6 +125,7 @@ namespace Rainbow.MeasureUserCtrl
                 BlankList = OmniProvider.BlankList[GlobalProvider.MarkOrder],
                 MeasureList = OmniProvider.MeasureList[GlobalProvider.MarkOrder],
                 Conc=double.Parse(txtConc.Text),
+                Unit= "ng/ul",
                 WaveList = OmniProvider.WaveList
             };
             DataList.Add(model);
@@ -131,7 +133,7 @@ namespace Rainbow.MeasureUserCtrl
       
         public void ExportTxt()
         {
-            Functions.ExportDataGrid(dataGrid);
+            UIHelper.ExportDataGrid(dataGrid);
         }
 
         private void txtSampleID_TextChanged(object sender, TextChangedEventArgs e)
@@ -149,6 +151,16 @@ namespace Rainbow.MeasureUserCtrl
             {
                 txtTypeValue.IsEnabled = false;
             }
+        }
+
+        private void schart_LostFocus(object sender, RoutedEventArgs e)
+        {
+            schart.HideWaveLine();
+        }
+
+        private void schart_MouseLeave(object sender, MouseEventArgs e)
+        {
+            schart.HideWaveLine();
         }
     }
 }

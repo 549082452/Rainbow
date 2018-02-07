@@ -107,7 +107,7 @@ namespace Rainbow.MeasureUserCtrl
 
         public void ExportTxt()
         {
-            Functions.ExportDataGrid(dataGrid);
+            UIHelper.ExportDataGrid(dataGrid);
         }
 
     }
