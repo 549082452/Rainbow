@@ -18,6 +18,10 @@ namespace Rainbow.Utility
         #region 全局变量
         public static MoveEnum CurrentMove;
         public static int MarkOrder;
+        /// <summary>
+        /// 判断是否需要提示保存
+        /// </summary>
+        public static bool IsGetMeasure=false;
         #endregion
 
         #region MeasureUserControl

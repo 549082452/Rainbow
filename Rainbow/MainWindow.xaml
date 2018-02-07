@@ -79,7 +79,7 @@
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
     </Window.Resources>
-    <TabControl Name="tabMain">
+    <TabControl Name="tabMain" SelectionChanged="tabMain_SelectionChanged">
         <TabItem Header="Operate System">
             <TabItem.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=ButtonStyle}">

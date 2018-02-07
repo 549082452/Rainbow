@@ -118,7 +118,7 @@ namespace Rainbow
         private void btnMeasure_Click(object sender, RoutedEventArgs e)
         {
             GlobalProvider.MeasureUserCtrl.Measure();
-            
+            GlobalProvider.IsGetMeasure = true;
         }
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
@@ -170,5 +170,26 @@ namespace Rainbow
             dialog.PrintVisual(borderMeasure,"mesure");
         }
 
+        private void tabMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.RemovedItems.Count > 0)
+            {
+                TabItem item = e.RemovedItems[0] as TabItem;
+                if (item.Header.ToString()=="Measure")
+                {
+                    if (GlobalProvider.IsGetMeasure)
+                    {
+                        if (MessageBoxResult.Yes == MessageBox.Show("Do you want leave without save?", "Leave", MessageBoxButton.YesNo))
+                        {
+                            GlobalProvider.IsGetMeasure = false;
+                        }
+                        else
+                        {
+                            tabMain.SelectedItem = e.RemovedItems[0];
+                        }
+                    }
+                }
+            }
+        }
     }
 }
